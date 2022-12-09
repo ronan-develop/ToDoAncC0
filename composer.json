@@ -25,8 +25,7 @@
         "symfony/swiftmailer-bundle": "^3.1",
         "symfony/monolog-bundle": "^3.1",
         "symfony/polyfill-apcu": "^1.0",
-        "sensio/framework-extra-bundle": "^3.0",
-        "symfony/dependency-injection": "*"
+        "sensio/framework-extra-bundle": "^3.0"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^4.0"
