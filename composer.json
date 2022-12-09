@@ -25,7 +25,8 @@
         "symfony/swiftmailer-bundle": "^3.1",
         "symfony/monolog-bundle": "^3.1",
         "symfony/polyfill-apcu": "^1.0",
-        "sensio/framework-extra-bundle": "^3.0"
+        "sensio/framework-extra-bundle": "^3.0",
+        "symfony/flex": "^1.19"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^4.0"
@@ -47,6 +48,14 @@
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
+        },
+        "symfony": {
+            "docker": false
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/flex": true
         }
     }
 }
