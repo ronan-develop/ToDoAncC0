@@ -1,54 +1,79 @@
 {
-    "name": "saro0h/to-do-list",
-    "license": "proprietary",
     "type": "project",
+    "license": "proprietary",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.1",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "doctrine/annotations": "^1.0",
+        "doctrine/doctrine-bundle": "^2.7",
+        "doctrine/doctrine-migrations-bundle": "^3.2",
+        "doctrine/orm": "^2.13",
+        "phpdocumentor/reflection-docblock": "^5.3",
+        "phpstan/phpdoc-parser": "^1.15",
+        "sensio/framework-extra-bundle": "^6.1",
+        "symfony/asset": "6.2.*",
+        "symfony/console": "6.2.*",
+        "symfony/doctrine-messenger": "6.2.*",
+        "symfony/dotenv": "6.2.*",
+        "symfony/expression-language": "6.2.*",
+        "symfony/flex": "^2",
+        "symfony/form": "6.2.*",
+        "symfony/framework-bundle": "6.2.*",
+        "symfony/http-client": "6.2.*",
+        "symfony/intl": "6.2.*",
+        "symfony/mailer": "6.2.*",
+        "symfony/mime": "6.2.*",
+        "symfony/monolog-bundle": "^3.0",
+        "symfony/notifier": "6.2.*",
+        "symfony/process": "6.2.*",
+        "symfony/property-access": "6.2.*",
+        "symfony/property-info": "6.2.*",
+        "symfony/runtime": "6.2.*",
+        "symfony/security-bundle": "6.2.*",
+        "symfony/serializer": "6.2.*",
+        "symfony/string": "6.2.*",
+        "symfony/translation": "6.2.*",
+        "symfony/twig-bundle": "6.2.*",
+        "symfony/validator": "6.2.*",
+        "symfony/web-link": "6.2.*",
+        "symfony/yaml": "6.2.*",
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/twig": "^2.12|^3.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/flex": true,
+            "symfony/runtime": true
+        },
+        "sort-packages": true
+    },
     "autoload": {
         "psr-4": {
             "App\\": "src/"
-        },
-        "classmap": [
-            "app/AppKernel.php",
-            "app/AppCache.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\": "tests/"
         }
     },
-    "require": {
-        "php": "^7.1.3",
-        "doctrine/doctrine-bundle": "^2.0",
-        "symfony/swiftmailer-bundle": "^3.1",
-        "symfony/monolog-bundle": "^3.8",
-        "symfony/polyfill-apcu": "^1.0",
-        "sensio/framework-extra-bundle": "^6.2",
-        "symfony/flex": "^1.19",
-        "symfony/twig-bundle": "*",
-        "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0",
-        "doctrine/doctrine-migrations-bundle": "^3.1",
-        "doctrine/orm": "^2.7",
-        "symfony/asset": "^5.4",
-        "symfony/mailer": "^5.4",
-        "symfony/form": "^5.4",
-        "symfony/security-bundle": "^5.4",
-        "symfony/translation": "^5.4",
-        "symfony/validator": "^5.4",
-        "symfony/yaml": "^5.4"
-    },
-    "require-dev": {
-        "symfony/phpunit-bridge": "^4.0",
-        "symfony/dotenv": "^5.4",
-        "symfony/maker-bundle": "^1.43",
-        "doctrine/doctrine-fixtures-bundle": "^3.4",
-        "symfony/stopwatch": "^5.4",
-        "symfony/web-profiler-bundle": "^5.4"
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-iconv": "*",
+        "symfony/polyfill-php72": "*",
+        "symfony/polyfill-php73": "*",
+        "symfony/polyfill-php74": "*",
+        "symfony/polyfill-php80": "*",
+        "symfony/polyfill-php81": "*"
     },
     "scripts": {
-        "auto-scripts": [
-
-        ],
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
         "post-install-cmd": [
             "@auto-scripts"
         ],
@@ -62,12 +87,17 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "docker": false
+            "require": "6.2.*"
         }
     },
-    "config": {
-        "allow-plugins": {
-            "symfony/flex": true
-        }
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "symfony/browser-kit": "6.2.*",
+        "symfony/css-selector": "6.2.*",
+        "symfony/debug-bundle": "6.2.*",
+        "symfony/maker-bundle": "^1.0",
+        "symfony/phpunit-bridge": "^6.2",
+        "symfony/stopwatch": "6.2.*",
+        "symfony/web-profiler-bundle": "6.2.*"
     }
 }
