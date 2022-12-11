@@ -40,7 +40,9 @@
         "symfony/phpunit-bridge": "^4.0",
         "symfony/dotenv": "^5.4",
         "symfony/maker-bundle": "^1.43",
-        "doctrine/doctrine-fixtures-bundle": "^3.4"
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "symfony/stopwatch": "^5.4",
+        "symfony/web-profiler-bundle": "^5.4"
     },
     "scripts": {
         "auto-scripts": [
