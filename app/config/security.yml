@@ -24,7 +24,6 @@ security:
             logout:
                 path: /logout
             switch_user: ~
-            logout_on_user_change: true
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
