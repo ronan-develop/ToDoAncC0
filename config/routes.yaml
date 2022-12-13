@@ -1,3 +1,23 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\DefaultController::indexAction
+
+user_create:
+    path: /user/create
+    controller: App\Controller\UserController::createAction
+
+login:
+    path: /login
+    controller: App\Controller\SecurityController::loginAction
+
+login_check:
+    path: /login/check
+    controller: App\Controller\SecurityController::loginCheck
+
+task_create:
+    path: task/create
+    controller: App\Controller\TaskController::createAction
+
+task_list:
+    path: /tasks
+    controller: App\Controller\TaskController::listAction
