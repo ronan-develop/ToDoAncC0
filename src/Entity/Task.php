@@ -54,6 +54,11 @@ class Task
         return $this;
     }
 
+    public function isDone(): bool
+    {
+        return $this->isDone;
+    }
+
     public function getTitle(): ?string
     {
         return $this->title;
