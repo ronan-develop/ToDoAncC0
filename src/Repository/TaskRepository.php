@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\Task;
@@ -9,8 +11,6 @@ use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Task>
- *
  * @method Task|null find($id, $lockMode = null, $lockVersion = null)
  * @method Task|null findOneBy(array $criteria, array $orderBy = null)
  * @method Task[]    findAll()
@@ -26,6 +26,7 @@ class TaskRepository extends ServiceEntityRepository
     /**
      * @throws ORMException
      * @throws OptimisticLockException
+     * @codeCoverageIgnore
      */
     public function add(Task $entity, bool $flush = true): void
     {
@@ -38,6 +39,7 @@ class TaskRepository extends ServiceEntityRepository
     /**
      * @throws ORMException
      * @throws OptimisticLockException
+     * @codeCoverageIgnore
      */
     public function remove(Task $entity, bool $flush = true): void
     {
@@ -75,4 +77,17 @@ class TaskRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * Sorts Tasks according whether or not they are "done" or not, with
+     * Tasks still "TODO" first
+     */
+    public function orderByStatus()
+    {
+        return $this->createQueryBuilder('t')
+            ->orderBy('t.isDone', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

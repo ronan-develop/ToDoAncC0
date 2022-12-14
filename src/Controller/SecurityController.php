@@ -1,20 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    /**
-     * @Route("/login", name="login")
-     */
-    public function login(Request $request, AuthenticationUtils $authenticationUtils): Response
+    #[Route('/login', name: 'login')]
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
@@ -25,20 +24,18 @@ class SecurityController extends AbstractController
         ));
     }
 
-    /**
-     * @Route("/login_check", name="login_check")
-     */
-    public function loginCheck()
+    #[Route('/login_check', name: 'login_check')]
+    public function loginCheck(): void
     {
         // This code is never executed.
     }
 
     /**
-     * @Route("/logout", name="logout")
      * @throws Exception
      */
-    public function logout()
+    #[Route('/logout', name: 'logout', methods: ['GET'])]
+    public function logoutCheck(): void
     {
-        throw new Exception('Will be intercepted before getting here');
+        throw new Exception('Don\'t forget to activate logout in security.yaml');
     }
 }
