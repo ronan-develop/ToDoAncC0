@@ -24,7 +24,7 @@ class Task
     private ?string $content = null;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $done = null;
+    private ?bool $isDone = null;
 
     #[ORM\ManyToOne(inversedBy: 'tasks')]
     private ?User $user = null;
@@ -78,12 +78,12 @@ class Task
 
     public function isDone(): ?bool
     {
-        return $this->done;
+        return $this->isDone;
     }
 
     public function toggle(bool $flag): self
     {
-        $this->done = $flag;
+        $this->isDone = $flag;
 
         return $this;
     }
