@@ -2,7 +2,6 @@ security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         # used to reload user from session & other features (e.g. switch_user)
@@ -21,13 +20,10 @@ security:
             lazy: true
             provider: app_user_provider
 
-            form_login:
-                login_path: login
-                check_path: login
-
             logout:
                 path: logout
                 target: homepage
+                # where to redirect after logout
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -35,18 +31,16 @@ security:
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
-    role_hierarchy:
-        ROLE_ADMIN: ROLE_USER
-        # Ensures the 'Anonymous' User to which default tasks are allocated has lower access control privileges than an actual
-        # User to avoid someone trying to impersonate that User
-        ROLE_USER: ROLE_DISABLED
+            # Easy way to control access for large sections of your site
+            # Note: Only the *first* access control that matches will be used
 
-        # Easy way to control access for large sections of your site
-        # Note: Only the *first* access control that matches will be used
-        access_control:
-#            - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-#            - { path: ^/users, roles: ROLE_ADMIN }
-#            - { path: ^/tasks, roles: ROLE_USER }
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+    #            - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    #            - { path: ^/users, roles: ROLE_ADMIN }
+    #            - { path: ^/tasks, roles: ROLE_USER }
+
 
 when@test:
     security:
