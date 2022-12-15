@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\TaskRepository;
+use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,12 +25,16 @@ class Task
     private ?string $content = null;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $done = null;
+    private ?bool $isDone = null;
+
+    #[ORM\ManyToOne(targetEntity: 'App\Entity\User', inversedBy: 'tasks')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $author;
 
     public function __construct()
     {
-        $this->createdAt = new \DateTimeImmutable();
-        $this->done = false;
+        $this->createdAt = new DateTimeImmutable();
+        $this->isDone = false;
     }
 
     public function getId(): ?int
@@ -47,6 +52,11 @@ class Task
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    public function isDone(): bool
+    {
+        return $this->isDone;
     }
 
     public function getTitle(): ?string
@@ -73,22 +83,33 @@ class Task
         return $this;
     }
 
-    public function isDone(): ?bool
+    public function getIsDone(): ?bool
     {
-        return $this->done;
+        return $this->isDone;
     }
 
-    public function toggle(bool $flag): self
+    public function setIsDone(?bool $isDone): self
     {
-        $this->done = $flag;
+        $this->isDone = $isDone;
 
         return $this;
     }
 
-    public function setDone(?bool $done): self
+    public function toggle($flag)
     {
-        $this->done = $done;
+        $this->isDone = $flag;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }
+
 }
