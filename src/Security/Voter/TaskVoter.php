@@ -30,7 +30,7 @@ class TaskVoter extends Voter
 
         // ... (check conditions and return true to grant permission) ...
         return match ($attribute) {
-            self::DELETE => $this->deleteTask($user, $attribute),
+            self::DELETE => $this->deleteTask($user, $subject),
             self::EDIT => $this->editTask($user, $attribute),
             self::ANONYMOUS => $this->deleteAnonymousTask($user, $attribute),
             default => false,
@@ -39,9 +39,9 @@ class TaskVoter extends Voter
     }
 
     // $subject => $task | $attribute => const
-    private function deleteTask(UserInterface $user, string $attribute): bool
+    private function deleteTask(UserInterface $user, mixed $subject): bool
     {
-        if (in_array('ROLE_ADMIN', $user->getRoles())) {
+        if ($user->getId() == $subject->getUser()->getId()) {
             return true;
         }
 
