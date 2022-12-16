@@ -13,6 +13,9 @@ security:
         secured_area:
             form_login:
                 enable_csrf: true
+            logout:
+                path: logout
+                target: homepage
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -20,9 +23,6 @@ security:
             lazy: true
             provider: app_user_provider
 
-            logout:
-                path: logout
-                target: homepage
                 # where to redirect after logout
 
             # activate different ways to authenticate
