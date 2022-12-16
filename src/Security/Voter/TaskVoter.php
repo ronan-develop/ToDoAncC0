@@ -8,14 +8,15 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class TaskVoter extends Voter
 {
-    public const EDIT = 'POST_EDIT';
-    public const VIEW = 'POST_VIEW';
+    public const DELETE = 'TASK_DELETE';
+    public const EDIT = 'EDIT_TASK';
+    public const ANONYMOUS = 'TASK_ANONYMOUS';
 
     protected function supports(string $attribute, mixed $subject): bool
     {
         // replace with your own logic
         // https://symfony.com/doc/current/security/voters.html
-        return in_array($attribute, [self::EDIT, self::VIEW])
+        return in_array($attribute, [self::DELETE, self::EDIT, self::ANONYMOUS])
             && $subject instanceof \App\Entity\Task;
     }
 
@@ -28,17 +29,34 @@ class TaskVoter extends Voter
         }
 
         // ... (check conditions and return true to grant permission) ...
-        switch ($attribute) {
-            case self::EDIT:
-                // logic to determine if the user can EDIT
-                // return true or false
-                break;
-            case self::VIEW:
-                // logic to determine if the user can VIEW
-                // return true or false
-                break;
+        return match ($attribute) {
+            self::DELETE => $this->deleteTask($user, $attribute),
+            self::EDIT => $this->editTask($user, $attribute),
+            self::ANONYMOUS => $this->deleteAnonymousTask($user, $attribute),
+            default => false,
+        };
+
+    }
+
+    // $subject => $task | $attribute => const
+    private function deleteTask(UserInterface $user, string $attribute): bool
+    {
+        if (in_array('ROLE_ADMIN', $user->getRoles())) {
+            return true;
         }
 
-        return false;
+        // Si l'utilisateur n'a pas le rôle "ROLE_ADMIN", vérifiez s'il est propriétaire de la tâche
+        return $user->getId() === $subject->getOwner()->getId();
     }
+
+    private function deleteAnonymousTask(UserInterface $user, string $attribute): bool
+    {
+        // Seuls les utilisateurs anonymes peuvent supprimer des tâches anonymes
+        return $user->getRoles() == 'ROLE_ADMIN';
+    }
+
+    private function editTask(UserInterface $user, string $attribute)
+    {
+    }
+
 }
