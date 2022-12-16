@@ -247,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671111889976</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="remove(taskVoter): restart from 0&#10;status ✅">
+      <created>1671197232431</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1671197232431</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +275,7 @@
     <MESSAGE value="rector(init): command ./vendor/bin/rector init&#10;state " />
     <MESSAGE value="rector(init): set Symfony version&#10;SymfonyLevelSetList&#10;state " />
     <MESSAGE value="Task(relation): set OneToMany&#10;applies correction on &quot;done&quot; property&#10;status ❌" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task(relation): set OneToMany&#10;applies correction on &quot;done&quot; property&#10;status ❌" />
+    <MESSAGE value="remove(taskVoter): restart from 0&#10;status ✅" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove(taskVoter): restart from 0&#10;status ✅" />
   </component>
 </project>
