@@ -49,14 +49,15 @@ class TaskVoter extends Voter
         return $user->getId() === $subject->getOwner()->getId();
     }
 
-    private function deleteAnonymousTask(UserInterface $user, string $attribute): bool
+    private function deleteAnonymousTask(UserInterface $user): bool
     {
         // Seuls les utilisateurs anonymes peuvent supprimer des tâches anonymes
         return $user->getRoles() == 'ROLE_ADMIN';
     }
 
-    private function editTask(UserInterface $user, string $attribute)
+    private function editTask(UserInterface $user, mixed $subject)
     {
+//        return $user->getId() === $subject->getOwner()->getId();
     }
 
 }

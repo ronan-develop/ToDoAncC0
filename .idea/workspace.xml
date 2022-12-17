@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="16b39a3a-b02a-4898-b1cb-bb973548723b" name="Changes" comment="" />
+    <list default="true" id="16b39a3a-b02a-4898-b1cb-bb973548723b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/controllers.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/controllers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/Voter/TaskVoter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/Voter/TaskVoter.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -240,6 +248,7 @@
       <workItem from="1671264843748" duration="2949000" />
       <workItem from="1671267959909" duration="3347000" />
       <workItem from="1671273221749" duration="802000" />
+      <workItem from="1671274111256" duration="1745000" />
     </task>
     <task id="LOCAL-00001" summary="rector(init): command ./vendor/bin/rector init&#10;state 🚧">
       <created>1671014078121</created>
@@ -297,7 +306,21 @@
       <option name="project" value="LOCAL" />
       <updated>1671200012495</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Webpack(generate): launch npm run build&#10;status ✅">
+      <created>1671274307213</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1671274307213</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Packages(amphp/http-client): required by Symfony&#10;status ✅">
+      <created>1671274355308</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1671274355308</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,6 +345,8 @@
     <MESSAGE value="voter(init): TaskVoter&#10;status ✅" />
     <MESSAGE value="Task(remove): Admin can remove anonymous&#10;status ✅" />
     <MESSAGE value="Task(remove): The user can remove his own tasks&#10;status ✅" />
-    <option name="LAST_COMMIT_MESSAGE" value="Task(remove): The user can remove his own tasks&#10;status ✅" />
+    <MESSAGE value="Webpack(generate): launch npm run build&#10;status ✅" />
+    <MESSAGE value="Packages(amphp/http-client): required by Symfony&#10;status ✅" />
+    <option name="LAST_COMMIT_MESSAGE" value="Packages(amphp/http-client): required by Symfony&#10;status ✅" />
   </component>
 </project>
