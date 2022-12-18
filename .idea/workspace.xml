@@ -305,7 +305,21 @@
       <option name="project" value="LOCAL" />
       <updated>1671376154979</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="security(redirect): to manage users you must have ROLE_ADMIN&#10;State ✅">
+      <created>1671376338918</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1671376338918</updated>
+    </task>
+    <task id="LOCAL-00011" summary="security(redirect): to manage users you must have ROLE_ADMIN&#10;State ✅">
+      <created>1671376376259</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1671376376259</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,6 +345,7 @@
     <MESSAGE value="NelmioAlice(recipes): played automatically&#10;State ✅" />
     <MESSAGE value=".gitignore(maj)&#10;State ✅" />
     <MESSAGE value="security(redirect): if user is not logged&#10;State ✅" />
-    <option name="LAST_COMMIT_MESSAGE" value="security(redirect): if user is not logged&#10;State ✅" />
+    <MESSAGE value="security(redirect): to manage users you must have ROLE_ADMIN&#10;State ✅" />
+    <option name="LAST_COMMIT_MESSAGE" value="security(redirect): to manage users you must have ROLE_ADMIN&#10;State ✅" />
   </component>
 </project>
