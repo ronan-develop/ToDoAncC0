@@ -319,7 +319,28 @@
       <option name="project" value="LOCAL" />
       <updated>1671376376259</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="security(create user button): secure create access for only admin&#10;State ✅">
+      <created>1671376849121</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1671376849121</updated>
+    </task>
+    <task id="LOCAL-00013" summary="security(create user button): secure create access for only admin&#10;State ✅">
+      <created>1671377122774</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1671377122775</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix(create user button): if no one logged to prevent error&#10;State ✅">
+      <created>1671377164232</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1671377164232</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,6 +367,8 @@
     <MESSAGE value=".gitignore(maj)&#10;State ✅" />
     <MESSAGE value="security(redirect): if user is not logged&#10;State ✅" />
     <MESSAGE value="security(redirect): to manage users you must have ROLE_ADMIN&#10;State ✅" />
-    <option name="LAST_COMMIT_MESSAGE" value="security(redirect): to manage users you must have ROLE_ADMIN&#10;State ✅" />
+    <MESSAGE value="security(create user button): secure create access for only admin&#10;State ✅" />
+    <MESSAGE value="fix(create user button): if no one logged to prevent error&#10;State ✅" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(create user button): if no one logged to prevent error&#10;State ✅" />
   </component>
 </project>
