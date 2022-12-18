@@ -298,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671374817203</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="security(redirect): if user is not logged&#10;State ✅">
+      <created>1671376154979</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1671376154979</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,6 +330,7 @@
     <MESSAGE value="NelmioAlice(install): package&#10;State ✅" />
     <MESSAGE value="NelmioAlice(recipes): played automatically&#10;State ✅" />
     <MESSAGE value=".gitignore(maj)&#10;State ✅" />
-    <option name="LAST_COMMIT_MESSAGE" value=".gitignore(maj)&#10;State ✅" />
+    <MESSAGE value="security(redirect): if user is not logged&#10;State ✅" />
+    <option name="LAST_COMMIT_MESSAGE" value="security(redirect): if user is not logged&#10;State ✅" />
   </component>
 </project>
