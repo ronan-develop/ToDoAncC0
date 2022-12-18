@@ -177,7 +177,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
-      <path value="$PROJECT_DIR$/vendor/mbezhanov/faker-provider-collection" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/alice" />
     </include_path>
   </component>
   <component name="ProjectId" id="2IrVacM5c1eu5ffAftmf6PIVBt4" />
@@ -277,7 +277,21 @@
       <option name="project" value="LOCAL" />
       <updated>1671363954889</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="NelmioAlice(install): package&#10;State ✅">
+      <created>1671364769971</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1671364769971</updated>
+    </task>
+    <task id="LOCAL-00007" summary="NelmioAlice(recipes): played automatically&#10;State ✅">
+      <created>1671364808563</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1671364808563</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,6 +313,8 @@
     <MESSAGE value="rector(init): set Symfony version&#10;SymfonyLevelSetList&#10;state " />
     <MESSAGE value="Task(relation): set OneToMany&#10;applies correction on &quot;done&quot; property&#10;status ❌" />
     <MESSAGE value="Faker(install): package&#10;State ✅" />
-    <option name="LAST_COMMIT_MESSAGE" value="Faker(install): package&#10;State ✅" />
+    <MESSAGE value="NelmioAlice(install): package&#10;State ✅" />
+    <MESSAGE value="NelmioAlice(recipes): played automatically&#10;State ✅" />
+    <option name="LAST_COMMIT_MESSAGE" value="NelmioAlice(recipes): played automatically&#10;State ✅" />
   </component>
 </project>
