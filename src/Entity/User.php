@@ -20,7 +20,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
-    #[Assert\NotBlank("Le champ username ne peut être vide")]
+    #[Assert\NotBlank(message: "Le champ username ne peut être vide")]
     private ?string $username = null;
 
     #[ORM\Column]
