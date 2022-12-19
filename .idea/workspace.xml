@@ -180,6 +180,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpstan-symfony" />
     </include_path>
   </component>
   <component name="ProjectId" id="2IrVacM5c1eu5ffAftmf6PIVBt4" />
@@ -244,7 +245,7 @@
       <workItem from="1671019185682" duration="4911000" />
       <workItem from="1671195866660" duration="611000" />
       <workItem from="1671433121814" duration="9619000" />
-      <workItem from="1671450047051" duration="1891000" />
+      <workItem from="1671450047051" duration="2776000" />
     </task>
     <task id="LOCAL-00001" summary="rector(init): command ./vendor/bin/rector init&#10;state 🚧">
       <created>1671014078121</created>
@@ -393,7 +394,21 @@
       <option name="project" value="LOCAL" />
       <updated>1671451519547</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="packages(phpstan/symfony): install &#10;State ✅">
+      <created>1671456702803</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1671456702803</updated>
+    </task>
+    <task id="LOCAL-00023" summary="packages(phpstan/symfony): install &#10;State ✅">
+      <created>1671456710377</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1671456710377</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,6 +443,7 @@
     <MESSAGE value=".idea(w&lt;orkspace)&#10;State ✅" />
     <MESSAGE value="composer(update)&#10;State ✅" />
     <MESSAGE value="fixes(assert): Exception need array string passed &#10;State ✅" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixes(assert): Exception need array string passed &#10;State ✅" />
+    <MESSAGE value="packages(phpstan/symfony): install &#10;State ✅" />
+    <option name="LAST_COMMIT_MESSAGE" value="packages(phpstan/symfony): install &#10;State ✅" />
   </component>
 </project>
