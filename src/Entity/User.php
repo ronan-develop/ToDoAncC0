@@ -31,7 +31,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column(type: "string", length: 60, nullable: false)]
     private ?string $password = null;
-
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
@@ -97,7 +96,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see PasswordAuthenticatedUserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }

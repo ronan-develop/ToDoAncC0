@@ -15,7 +15,7 @@ security:
                 enable_csrf: true
             logout:
                 path: logout
-                target: homepage
+                target: login
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -37,8 +37,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-    #            - { path: ^/$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-    #            - { path: ^/users, roles: ROLE_ADMIN }
+                - { path: ^/$, roles: ROLE_USER} # redirect if not logged
+                - { path: ^/users, roles: ROLE_ADMIN }
     #            - { path: ^/tasks, roles: ROLE_USER }
 
 
