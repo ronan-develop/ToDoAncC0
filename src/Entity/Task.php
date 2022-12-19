@@ -32,7 +32,6 @@ class Task
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
-        $this->done = false;
     }
 
     public function getId(): ?int
@@ -84,13 +83,6 @@ class Task
     public function toggle(bool $flag): self
     {
         $this->isDone = $flag;
-
-        return $this;
-    }
-
-    public function setDone(?bool $done): self
-    {
-        $this->done = $done;
 
         return $this;
     }
