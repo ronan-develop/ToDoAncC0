@@ -32,21 +32,21 @@ class TaskVoter extends Voter
         return match ($attribute) {
             self::DELETE => $this->deleteTask($user, $subject),
             self::EDIT => $this->editTask($user, $attribute),
-            self::ANONYMOUS => $this->deleteAnonymousTask($user),
+            self::ANONYMOUS => $this->deleteAnonymousTask($user, $attribute),
             default => false,
         };
 
     }
 
     // $subject => $task | $attribute => const
-    private function deleteTask(UserInterface $user, mixed $subject)
+    private function deleteTask(UserInterface $user, mixed $subject): bool
     {
-//        if ($user->getId() == $subject->getUser()->getId()) {
-//            return true;
-//        }
+        if ($user->getId() == $subject->getUser()->getId()) {
+            return true;
+        }
 
         // Si l'utilisateur n'a pas le rôle "ROLE_ADMIN", vérifiez s'il est propriétaire de la tâche
-//        return $user->getId() === $subject->getOwner()->getId();
+        return $user->getId() === $subject->getOwner()->getId();
     }
 
     private function deleteAnonymousTask(UserInterface $user): bool

@@ -33,6 +33,7 @@ class UserFixtures extends \Doctrine\Bundle\FixturesBundle\Fixture
                 ->setUsername("user-".$i)
                 ->setPassword($this->hasher->hashPassword($user, '0000'))
                 ->setEmail(strtolower($user->getUsername()) . "@mail.fr")
+                ->setRoles(["ROLE_USER"])
             ;
 
             $manager->persist($user);
