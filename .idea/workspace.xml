@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="16b39a3a-b02a-4898-b1cb-bb973548723b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,6 +184,8 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
       <path value="$PROJECT_DIR$/vendor/phpstan/phpstan-symfony" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpstan-doctrine" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/extension-installer" />
     </include_path>
   </component>
   <component name="ProjectId" id="2IrVacM5c1eu5ffAftmf6PIVBt4" />
@@ -246,6 +251,7 @@
       <workItem from="1671195866660" duration="611000" />
       <workItem from="1671433121814" duration="9619000" />
       <workItem from="1671450047051" duration="4562000" />
+      <workItem from="1671532437970" duration="1824000" />
     </task>
     <task id="LOCAL-00001" summary="rector(init): command ./vendor/bin/rector init&#10;state 🚧">
       <created>1671014078121</created>
@@ -443,7 +449,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671524992827</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="phpstan(Task): undefined method setAuthor()">
+      <created>1671525230675</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1671525230675</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,6 +496,7 @@
     <MESSAGE value="phpstan(remove): unused property &#10;State ✅" />
     <MESSAGE value="phpstan(config) &#10;State ✅" />
     <MESSAGE value="Revert &quot;phpstan(level 5): basic errors are corrected Need to work on Voter State ✅&quot;&#10;&#10;This reverts commit 96760f49" />
-    <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;phpstan(level 5): basic errors are corrected Need to work on Voter State ✅&quot;&#10;&#10;This reverts commit 96760f49" />
+    <MESSAGE value="phpstan(Task): undefined method setAuthor()" />
+    <option name="LAST_COMMIT_MESSAGE" value="phpstan(Task): undefined method setAuthor()" />
   </component>
 </project>
