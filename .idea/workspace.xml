@@ -183,9 +183,6 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
-      <path value="$PROJECT_DIR$/vendor/phpstan/phpstan-symfony" />
-      <path value="$PROJECT_DIR$/vendor/phpstan/phpstan-doctrine" />
-      <path value="$PROJECT_DIR$/vendor/phpstan/extension-installer" />
       <path value="$PROJECT_DIR$/vendor/nelmio/alice" />
     </include_path>
   </component>
@@ -252,7 +249,7 @@
       <workItem from="1671195866660" duration="611000" />
       <workItem from="1671433121814" duration="9619000" />
       <workItem from="1671450047051" duration="4562000" />
-      <workItem from="1671532437970" duration="2711000" />
+      <workItem from="1671532437970" duration="6936000" />
     </task>
     <task id="LOCAL-00001" summary="rector(init): command ./vendor/bin/rector init&#10;state 🚧">
       <created>1671014078121</created>
@@ -471,7 +468,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671535788689</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="package(nelmio-alice): install">
+      <created>1671540452218</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1671540452218</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -489,7 +493,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rector(init): command ./vendor/bin/rector init&#10;state " />
     <MESSAGE value="rector(init): set Symfony version&#10;SymfonyLevelSetList&#10;state " />
     <MESSAGE value="Task(relation): set OneToMany&#10;applies correction on &quot;done&quot; property&#10;status ❌" />
     <MESSAGE value="Faker(install): package&#10;State ✅" />
@@ -513,6 +516,7 @@
     <MESSAGE value="Revert &quot;phpstan(level 5): basic errors are corrected Need to work on Voter State ✅&quot;&#10;&#10;This reverts commit 96760f49" />
     <MESSAGE value="phpstan(Task): undefined method setAuthor()" />
     <MESSAGE value="phpstan(extensions): extension-installer, phpstan-doctrine" />
+    <MESSAGE value=".idea(nelmio-alice)" />
     <MESSAGE value="package(nelmio-alice): install" />
     <option name="LAST_COMMIT_MESSAGE" value="package(nelmio-alice): install" />
   </component>
