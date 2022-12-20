@@ -16,7 +16,7 @@ class TaskVoter extends Voter
     {
         // replace with your own logic
         // https://symfony.com/doc/current/security/voters.html
-        return in_array($attribute, [self::DELETE, self::EDIT, self::ANONYMOUS])
+        return in_array($attribute, [self::DELETE, self::ANONYMOUS])
             && $subject instanceof \App\Entity\Task;
     }
 
@@ -31,7 +31,7 @@ class TaskVoter extends Voter
         // ... (check conditions and return true to grant permission) ...
         return match ($attribute) {
             self::DELETE => $this->deleteTask($user, $subject),
-            self::EDIT => $this->editTask($user, $attribute),
+//            self::EDIT => $this->editTask($user, $attribute),
             self::ANONYMOUS => $this->deleteAnonymousTask($user, $attribute),
             default => false,
         };
@@ -55,9 +55,9 @@ class TaskVoter extends Voter
         return $user->getRoles() == 'ROLE_ADMIN';
     }
 
-    private function editTask(UserInterface $user, mixed $subject)
-    {
+//    private function editTask(UserInterface $user, mixed $subject)
+//    {
 //        return $user->getId() === $subject->getOwner()->getId();
-    }
+//    }
 
 }

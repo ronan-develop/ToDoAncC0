@@ -38,15 +38,15 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user, [
             'require_password' => true,
         ]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $user,
-                    $form->get('password')->getData()
-                )
-            );
+
+            $password = $form->get('password')->getData();
+            $hashedPassword = $userPasswordHasher->hashPassword($user, $password);
+
+            $user->setPassword($hashedPassword);
             $entityManager->persist($user);
             $entityManager->flush();
 

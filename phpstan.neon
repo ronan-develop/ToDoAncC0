@@ -1,9 +1,9 @@
 parameters:
-    level: 9
+    level: 8
     paths:
         - src
         - tests
 
 #    reportUnmatchedIgnoredErrors: false
-#    checkGenericClassInNonGenericObjectType: false
+    checkGenericClassInNonGenericObjectType: false
 #    ignoreErrors:

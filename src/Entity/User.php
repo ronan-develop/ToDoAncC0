@@ -76,8 +76,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @see UserInterface
+     * @return string[]
      */
-    public function getRoles(): array
+    public function getRoles():array
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
