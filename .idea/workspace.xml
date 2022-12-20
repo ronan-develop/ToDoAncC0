@@ -186,6 +186,7 @@
       <path value="$PROJECT_DIR$/vendor/phpstan/phpstan-symfony" />
       <path value="$PROJECT_DIR$/vendor/phpstan/phpstan-doctrine" />
       <path value="$PROJECT_DIR$/vendor/phpstan/extension-installer" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/alice" />
     </include_path>
   </component>
   <component name="ProjectId" id="2IrVacM5c1eu5ffAftmf6PIVBt4" />
@@ -251,7 +252,7 @@
       <workItem from="1671195866660" duration="611000" />
       <workItem from="1671433121814" duration="9619000" />
       <workItem from="1671450047051" duration="4562000" />
-      <workItem from="1671532437970" duration="1824000" />
+      <workItem from="1671532437970" duration="2711000" />
     </task>
     <task id="LOCAL-00001" summary="rector(init): command ./vendor/bin/rector init&#10;state 🚧">
       <created>1671014078121</created>
@@ -456,7 +457,21 @@
       <option name="project" value="LOCAL" />
       <updated>1671525230675</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="phpstan(extensions): extension-installer, phpstan-doctrine">
+      <created>1671535687528</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1671535687528</updated>
+    </task>
+    <task id="LOCAL-00031" summary="package(nelmio-alice): install">
+      <created>1671535788689</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1671535788689</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -497,6 +512,8 @@
     <MESSAGE value="phpstan(config) &#10;State ✅" />
     <MESSAGE value="Revert &quot;phpstan(level 5): basic errors are corrected Need to work on Voter State ✅&quot;&#10;&#10;This reverts commit 96760f49" />
     <MESSAGE value="phpstan(Task): undefined method setAuthor()" />
-    <option name="LAST_COMMIT_MESSAGE" value="phpstan(Task): undefined method setAuthor()" />
+    <MESSAGE value="phpstan(extensions): extension-installer, phpstan-doctrine" />
+    <MESSAGE value="package(nelmio-alice): install" />
+    <option name="LAST_COMMIT_MESSAGE" value="package(nelmio-alice): install" />
   </component>
 </project>
