@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class TaskController extends AbstractController
 {
@@ -22,12 +21,22 @@ class TaskController extends AbstractController
     public function list(TaskRepository $taskRepository): Response
     {
         $tasks = $taskRepository->orderByStatus();
+
         return $this->render(
             'task/list.html.twig',
             [
                 'tasks' => $tasks
             ]
         );
+    }
+
+    #[Route('/tasks/show', name: 'task_show', methods: ['GET'])]
+    public function show(TaskRepository $taskRepository): Response
+    {
+        $tasks = $taskRepository->findBy(["user"=>$this->getUser()]);
+        return $this->render('task/list.html.twig', [
+            'tasks'=>$tasks
+        ]);
     }
 
     /**
@@ -94,9 +103,13 @@ class TaskController extends AbstractController
      * @throws ORMException
      */
     #[Route('/tasks/{id}/delete', name: 'task_delete')]
-    #[IsGranted('TASK_DELETE', subject: 'task')]
     public function deleteTask(Task $task, TaskRepository $taskRepository): Response
     {
+        $this->denyAccessUnlessGranted(
+            'DELETE_TASK',
+            $task,
+            'vous n\'avez pas accès à la suppression de cette tâche');
+
         $taskRepository->remove($task);
 
         $this->addFlash('success', 'La tâche a bien été supprimée.');
