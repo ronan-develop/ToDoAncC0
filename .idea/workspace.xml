@@ -518,7 +518,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672140902798</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="phpstan(analyse): neon&#10;User: __toString return string or null&#10;Repository: orderByStatus() no return type&#10;status: ✅">
+      <created>1672144377888</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1672144377888</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -536,7 +543,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="security(redirect): if user is not logged&#10;State ✅" />
     <MESSAGE value="security(redirect): to manage users you must have ROLE_ADMIN&#10;State ✅" />
     <MESSAGE value="security(create user button): secure create access for only admin&#10;State ✅" />
     <MESSAGE value="fix(create user button): if no one logged to prevent error&#10;State ✅" />
@@ -561,6 +567,7 @@
     <MESSAGE value="fixtures(Users &amp; Tasks): refacto in one file &#10;status: ✅" />
     <MESSAGE value="Fixtures(Admin): change username to Admin &#10;status: ✅" />
     <MESSAGE value=" Voter(task): control access&#10; owner can delete&#10; admin can delete an orphan task&#10; &#10;status: ✅" />
-    <option name="LAST_COMMIT_MESSAGE" value=" Voter(task): control access&#10; owner can delete&#10; admin can delete an orphan task&#10; &#10;status: ✅" />
+    <MESSAGE value="phpstan(analyse): neon&#10;User: __toString return string or null&#10;Repository: orderByStatus() no return type&#10;status: ✅" />
+    <option name="LAST_COMMIT_MESSAGE" value="phpstan(analyse): neon&#10;User: __toString return string or null&#10;Repository: orderByStatus() no return type&#10;status: ✅" />
   </component>
 </project>

@@ -33,9 +33,14 @@ class TaskVoter extends Voter
         }
 
         // ... (check conditions and return true to grant permission) ...
-        return match ($attribute) {
-            self::DELETE => $this->deleteTask($user, $subject)
-        };
+//        return match ($attribute) {
+//            self::DELETE => $this->deleteTask($user, $subject)
+//        };
+        if($attribute == self::DELETE){
+            return $this->deleteTask($user, $subject);
+        }
+
+        return false;
 
     }
 
@@ -49,12 +54,6 @@ class TaskVoter extends Voter
             return true;
         }
         return false;
-    }
-
-    private function deleteAnonymousTask(UserInterface $user): bool
-    {
-        // Seuls les utilisateurs anonymes peuvent supprimer des tâches anonymes
-        return $user->getRoles() == 'ROLE_ADMIN';
     }
 
 }
