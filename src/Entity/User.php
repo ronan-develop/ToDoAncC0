@@ -23,9 +23,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank(message: "Le champ username ne peut être vide")]
     private ?string $username = null;
 
+    /**
+     * @var array<string>
+     */
     #[ORM\Column(type: 'json')]
     private array $roles = [];
-
     /**
      * @var string The hashed password
      */
