@@ -82,7 +82,7 @@ class TaskRepository extends ServiceEntityRepository
      * Sorts Tasks according whether or not they are "done" or not, with
      * Tasks still "TODO" first
      */
-    public function orderByStatus()
+    public function orderByStatus(): mixed
     {
         return $this->createQueryBuilder('t')
             ->orderBy('t.isDone', 'ASC')
