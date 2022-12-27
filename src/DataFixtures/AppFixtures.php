@@ -24,7 +24,7 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
         $admin = new User();
         $admin->setEmail($faker->email())
-            ->setUsername($faker->userName())
+            ->setUsername("Admin")
             ->setRoles(["ROLE_ADMIN"])
             ->setPassword($this->userPasswordHasher->hashPassword(
                 $admin,
