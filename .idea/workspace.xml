@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16b39a3a-b02a-4898-b1cb-bb973548723b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +39,6 @@
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/laminas/laminas-code" />
-      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
@@ -83,8 +81,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/messenger" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
-      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bridge" />
-      <path value="$PROJECT_DIR$/vendor/symfony/monolog-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/notifier" />
       <path value="$PROJECT_DIR$/vendor/symfony/options-resolver" />
       <path value="$PROJECT_DIR$/vendor/symfony/password-hasher" />
@@ -183,8 +179,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
       <path value="$PROJECT_DIR$/vendor/nelmio/alice" />
-      <path value="$PROJECT_DIR$/vendor/phpstan/extension-installer" />
-      <path value="$PROJECT_DIR$/vendor/phpstan/phpstan-symfony" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
     </include_path>
   </component>
   <component name="ProjectId" id="2IrVacM5c1eu5ffAftmf6PIVBt4" />
@@ -231,17 +226,25 @@
       <recent name="G:\ToDoAndC0\tests\Entity" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.UserTest">
-    <configuration name="TaskTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Entity\TaskTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Entity/TaskTest.php" scope="Class" />
+  <component name="RunManager" selected="PHPUnit.DefaultControllerTest.testHomepageWhenUserIsConnected">
+    <configuration name="DefaultControllerTest.testHomepageRedirectToLogin" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Controller\DefaultControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Controller/DefaultControllerTest.php" method="testHomepageRedirectToLogin" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="TaskTest.testSetUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Entity\TaskTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Entity/TaskTest.php" method="testSetUser" scope="Method" />
+    <configuration name="DefaultControllerTest.testHomepageStatusCode" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Controller\DefaultControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Controller/DefaultControllerTest.php" method="testHomepageStatusCode" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Entity\UserTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Entity/UserTest.php" scope="Class" />
+    <configuration name="DefaultControllerTest.testHomepageWhenUserIsConnected" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Controller\DefaultControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Controller/DefaultControllerTest.php" method="testHomepageWhenUserIsConnected" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="DefaultControllerTest.testIndex" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Controller\DefaultControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Controller/DefaultControllerTest.php" method="testIndex" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="DefaultControllerTest.testLogin" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Controller\DefaultControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Controller/DefaultControllerTest.php" method="testLogin" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -250,9 +253,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.UserTest" />
-        <item itemvalue="PHPUnit.TaskTest.testSetUser" />
-        <item itemvalue="PHPUnit.TaskTest" />
+        <item itemvalue="PHPUnit.DefaultControllerTest.testHomepageWhenUserIsConnected" />
+        <item itemvalue="PHPUnit.DefaultControllerTest.testLogin" />
+        <item itemvalue="PHPUnit.DefaultControllerTest.testHomepageRedirectToLogin" />
+        <item itemvalue="PHPUnit.DefaultControllerTest.testHomepageStatusCode" />
+        <item itemvalue="PHPUnit.DefaultControllerTest.testIndex" />
       </list>
     </recent_temporary>
   </component>
@@ -622,5 +627,9 @@
     <MESSAGE value="test(untitest): run OK&#10;status: ✅" />
     <MESSAGE value="test(unitTest): run OK&#10;status: ✅" />
     <option name="LAST_COMMIT_MESSAGE" value="test(unitTest): run OK&#10;status: ✅" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ToDoAndC0@DefaultControllerTest_testHomepageWhenUserIsConnected.xml" NAME="DefaultControllerTest.testHomepageWhenUserIsConnected Coverage Results" MODIFIED="1672238130332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ToDoAndC0@DefaultControllerTest_testLogin.xml" NAME="DefaultControllerTest.testLogin Coverage Results" MODIFIED="1672236803429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
