@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16b39a3a-b02a-4898-b1cb-bb973548723b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -230,7 +231,7 @@
       <recent name="G:\ToDoAndC0\tests\Entity" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.TaskTest.testSetUser">
+  <component name="RunManager" selected="PHPUnit.UserTest">
     <configuration name="TaskTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="App\Tests\Entity\TaskTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Entity/TaskTest.php" scope="Class" />
       <method v="2" />
@@ -239,12 +240,17 @@
       <TestRunner class="App\Tests\Entity\TaskTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Entity/TaskTest.php" method="testSetUser" scope="Method" />
       <method v="2" />
     </configuration>
+    <configuration name="UserTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Entity\UserTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Entity/UserTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.UserTest" />
         <item itemvalue="PHPUnit.TaskTest.testSetUser" />
         <item itemvalue="PHPUnit.TaskTest" />
       </list>
@@ -268,7 +274,8 @@
       <workItem from="1671450047051" duration="4562000" />
       <workItem from="1671532437970" duration="8320000" />
       <workItem from="1672122230888" duration="4556000" />
-      <workItem from="1672146548166" duration="771000" />
+      <workItem from="1672146548166" duration="3598000" />
+      <workItem from="1672212098408" duration="1817000" />
     </task>
     <task id="LOCAL-00001" summary="rector(init): command ./vendor/bin/rector init&#10;state 🚧">
       <created>1671014078121</created>
@@ -550,7 +557,28 @@
       <option name="project" value="LOCAL" />
       <updated>1672144982856</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="test(untitest): run OK&#10;status: ✅">
+      <created>1672147722864</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1672147722864</updated>
+    </task>
+    <task id="LOCAL-00042" summary="test(untitest): run OK&#10;status: ✅">
+      <created>1672147755240</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1672147755240</updated>
+    </task>
+    <task id="LOCAL-00043" summary="test(unitTest): run OK&#10;status: ✅">
+      <created>1672147794183</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1672147794183</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,8 +596,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="security(create user button): secure create access for only admin&#10;State ✅" />
-    <MESSAGE value="fix(create user button): if no one logged to prevent error&#10;State ✅" />
     <MESSAGE value="fix(create user button): replace condition by is_granted&#10;State ✅" />
     <MESSAGE value="fix(create user): Return value must be of type string, null returned&#10;State ✅" />
     <MESSAGE value="closes(#2 #3 #4 #13 #14 #17): &#10;Migrate Ok&#10;Fixtures Ok&#10;Role Ok&#10;admin access Ok&#10;State ✅" />
@@ -593,6 +619,8 @@
     <MESSAGE value=" Voter(task): control access&#10; owner can delete&#10; admin can delete an orphan task&#10; &#10;status: ✅" />
     <MESSAGE value="phpstan(analyse): neon&#10;User: __toString return string or null&#10;Repository: orderByStatus() no return type&#10;status: ✅" />
     <MESSAGE value="phpstan(analyse): neon&#10;Voter useless deleteAnonymous &amp; match not handle string&#10;status: ✅" />
-    <option name="LAST_COMMIT_MESSAGE" value="phpstan(analyse): neon&#10;Voter useless deleteAnonymous &amp; match not handle string&#10;status: ✅" />
+    <MESSAGE value="test(untitest): run OK&#10;status: ✅" />
+    <MESSAGE value="test(unitTest): run OK&#10;status: ✅" />
+    <option name="LAST_COMMIT_MESSAGE" value="test(unitTest): run OK&#10;status: ✅" />
   </component>
 </project>
