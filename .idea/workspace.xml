@@ -278,7 +278,7 @@
       <workItem from="1672122230888" duration="4556000" />
       <workItem from="1672146548166" duration="3598000" />
       <workItem from="1672212098408" duration="1817000" />
-      <workItem from="1672299990907" duration="441000" />
+      <workItem from="1672299990907" duration="3186000" />
     </task>
     <task id="LOCAL-00001" summary="rector(init): command ./vendor/bin/rector init&#10;state 🚧">
       <created>1671014078121</created>
@@ -595,7 +595,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672300388546</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="recipes(update): symfony/framework-bundle&#10;status: ✅">
+      <created>1672300474133</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1672300474133</updated>
+    </task>
+    <task id="LOCAL-00047" summary="recipes(update): symfony/routing&#10;status: ✅">
+      <created>1672300537590</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1672300537590</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -613,9 +627,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix(create user): Return value must be of type string, null returned&#10;State ✅" />
-    <MESSAGE value="closes(#2 #3 #4 #13 #14 #17): &#10;Migrate Ok&#10;Fixtures Ok&#10;Role Ok&#10;admin access Ok&#10;State ✅" />
-    <MESSAGE value=".idea(w&lt;orkspace)&#10;State ✅" />
     <MESSAGE value="composer(update)&#10;State ✅" />
     <MESSAGE value="fixes(assert): Exception need array string passed &#10;State ✅" />
     <MESSAGE value="packages(phpstan/symfony): install &#10;State ✅" />
@@ -638,7 +649,10 @@
     <MESSAGE value="test(untitest): run OK&#10;status: ✅" />
     <MESSAGE value="test(unitTest): run OK&#10;status: ✅" />
     <MESSAGE value="bundle(dama doctrine): install&#10;status: ✅" />
-    <option name="LAST_COMMIT_MESSAGE" value="bundle(dama doctrine): install&#10;status: ✅" />
+    <MESSAGE value="recipes(update): doctrine/doctrine-bundle&#10;status: ✅" />
+    <MESSAGE value="recipes(update): symfony/framework-bundle&#10;status: ✅" />
+    <MESSAGE value="recipes(update): symfony/routing&#10;status: ✅" />
+    <option name="LAST_COMMIT_MESSAGE" value="recipes(update): symfony/routing&#10;status: ✅" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ToDoAndC0@DefaultControllerTest_testHomepageWhenUserIsConnected.xml" NAME="DefaultControllerTest.testHomepageWhenUserIsConnected Coverage Results" MODIFIED="1672238130332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

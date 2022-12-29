@@ -112,3 +112,7 @@ fabric.properties
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+###< test-build ###
+/build/
+### test-build >###
