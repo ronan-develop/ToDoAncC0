@@ -185,6 +185,8 @@
       <path value="$PROJECT_DIR$/vendor/nelmio/alice" />
       <path value="$PROJECT_DIR$/vendor/phpstan/extension-installer" />
       <path value="$PROJECT_DIR$/vendor/phpstan/phpstan-symfony" />
+      <path value="$PROJECT_DIR$/vendor/bin/.phpunit" />
+      <path value="$PROJECT_DIR$/vendor/dama/doctrine-test-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="2IrVacM5c1eu5ffAftmf6PIVBt4" />
@@ -596,7 +598,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix(create user button): replace condition by is_granted&#10;State ✅" />
     <MESSAGE value="fix(create user): Return value must be of type string, null returned&#10;State ✅" />
     <MESSAGE value="closes(#2 #3 #4 #13 #14 #17): &#10;Migrate Ok&#10;Fixtures Ok&#10;Role Ok&#10;admin access Ok&#10;State ✅" />
     <MESSAGE value=".idea(w&lt;orkspace)&#10;State ✅" />
@@ -621,6 +622,11 @@
     <MESSAGE value="phpstan(analyse): neon&#10;Voter useless deleteAnonymous &amp; match not handle string&#10;status: ✅" />
     <MESSAGE value="test(untitest): run OK&#10;status: ✅" />
     <MESSAGE value="test(unitTest): run OK&#10;status: ✅" />
-    <option name="LAST_COMMIT_MESSAGE" value="test(unitTest): run OK&#10;status: ✅" />
+    <MESSAGE value="bundle(dama doctrine): install&#10;status: ✅" />
+    <option name="LAST_COMMIT_MESSAGE" value="bundle(dama doctrine): install&#10;status: ✅" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ToDoAndC0@DefaultControllerTest_testHomepageWhenUserIsConnected.xml" NAME="DefaultControllerTest.testHomepageWhenUserIsConnected Coverage Results" MODIFIED="1672238130332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ToDoAndC0@DefaultControllerTest_testLogin.xml" NAME="DefaultControllerTest.testLogin Coverage Results" MODIFIED="1672236803429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
