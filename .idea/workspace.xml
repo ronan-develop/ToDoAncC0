@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16b39a3a-b02a-4898-b1cb-bb973548723b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,6 +187,8 @@
       <path value="$PROJECT_DIR$/vendor/nelmio/alice" />
       <path value="$PROJECT_DIR$/vendor/phpstan/extension-installer" />
       <path value="$PROJECT_DIR$/vendor/phpstan/phpstan-symfony" />
+      <path value="$PROJECT_DIR$/vendor/bin/.phpunit" />
+      <path value="$PROJECT_DIR$/vendor/dama/doctrine-test-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="2IrVacM5c1eu5ffAftmf6PIVBt4" />
@@ -276,6 +280,7 @@
       <workItem from="1672122230888" duration="4556000" />
       <workItem from="1672146548166" duration="3598000" />
       <workItem from="1672212098408" duration="1817000" />
+      <workItem from="1672297773210" duration="1307000" />
     </task>
     <task id="LOCAL-00001" summary="rector(init): command ./vendor/bin/rector init&#10;state 🚧">
       <created>1671014078121</created>
@@ -622,5 +627,9 @@
     <MESSAGE value="test(untitest): run OK&#10;status: ✅" />
     <MESSAGE value="test(unitTest): run OK&#10;status: ✅" />
     <option name="LAST_COMMIT_MESSAGE" value="test(unitTest): run OK&#10;status: ✅" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ToDoAndC0@DefaultControllerTest_testHomepageWhenUserIsConnected.xml" NAME="DefaultControllerTest.testHomepageWhenUserIsConnected Coverage Results" MODIFIED="1672238130332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ToDoAndC0@DefaultControllerTest_testLogin.xml" NAME="DefaultControllerTest.testLogin Coverage Results" MODIFIED="1672236803429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
