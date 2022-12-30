@@ -20,10 +20,15 @@ class DefaultControllerTest extends WebTestCase
      */
     public function testWhenUserNotLogged(): void
     {
+        /**
+         * Shuts the kernel down if it was used in the test
+         */
+        self::ensureKernelShutdown();
         // simulation d'une request dans symfony
         $client = static::createClient();
-        $client->request(Request::METHOD_GET, "/");
+        $crawler = $client->request(Request::METHOD_GET, "/");
 
+        $this->assertSelectorTextContains('title', 'Redirecting to http://localhost/login');
         $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);
     }
 
