@@ -4,9 +4,14 @@ namespace App\Tests\Entity;
 
 use App\Entity\Task;
 use App\Entity\User;
-use PHPUnit\Framework\TestCase;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class TaskTest extends TestCase
+/**
+ * @covers \App\Entity\Task
+ * @uses User
+ * @package App\Tests
+ */
+class TaskTest extends KernelTestCase
 {
     public function testGetCreatedAt()
     {

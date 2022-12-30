@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16b39a3a-b02a-4898-b1cb-bb973548723b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml.dist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Controller/DefaultControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Controller/DefaultControllerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Entity/TaskTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Entity/TaskTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Entity/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Entity/UserTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,25 +167,6 @@
       <path value="$PROJECT_DIR$/vendor/masterminds/html5" />
       <path value="$PROJECT_DIR$/vendor/rector/rector" />
       <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
-      <path value="$PROJECT_DIR$/vendor/kelunik/certificate" />
-      <path value="$PROJECT_DIR$/vendor/daverandom/libdns" />
-      <path value="$PROJECT_DIR$/vendor/amphp/amp" />
-      <path value="$PROJECT_DIR$/vendor/amphp/byte-stream" />
-      <path value="$PROJECT_DIR$/vendor/amphp/cache" />
-      <path value="$PROJECT_DIR$/vendor/amphp/dns" />
-      <path value="$PROJECT_DIR$/vendor/amphp/hpack" />
-      <path value="$PROJECT_DIR$/vendor/amphp/http" />
-      <path value="$PROJECT_DIR$/vendor/amphp/http-client" />
-      <path value="$PROJECT_DIR$/vendor/amphp/parser" />
-      <path value="$PROJECT_DIR$/vendor/amphp/process" />
-      <path value="$PROJECT_DIR$/vendor/amphp/serialization" />
-      <path value="$PROJECT_DIR$/vendor/amphp/socket" />
-      <path value="$PROJECT_DIR$/vendor/amphp/sync" />
-      <path value="$PROJECT_DIR$/vendor/amphp/windows-registry" />
-      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
-      <path value="$PROJECT_DIR$/vendor/league/uri" />
-      <path value="$PROJECT_DIR$/vendor/league/uri-interfaces" />
-      <path value="$PROJECT_DIR$/vendor/league/uri-parser" />
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
       <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
@@ -233,17 +221,25 @@
       <recent name="G:\ToDoAndC0\tests\Entity" />
     </key>
   </component>
-  <component name="RunManager" selected="PHPUnit.UserTest">
-    <configuration name="TaskTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Entity\TaskTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Entity/TaskTest.php" scope="Class" />
+  <component name="RunManager" selected="PHPUnit.SecurityControllerTest.testUserCanAccessLoginForm">
+    <configuration name="DefaultControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Controller\DefaultControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Controller/DefaultControllerTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="TaskTest.testSetUser" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Entity\TaskTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Entity/TaskTest.php" method="testSetUser" scope="Method" />
+    <configuration name="SecurityControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Controller\SecurityControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Controller/SecurityControllerTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="UserTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="App\Tests\Entity\UserTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Entity/UserTest.php" scope="Class" />
+    <configuration name="SecurityControllerTest.testLogin" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Controller\SecurityControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Controller/SecurityControllerTest.php" method="testLogin" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SecurityControllerTest.testUserCanAccessLoginForm" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Controller\SecurityControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Controller/SecurityControllerTest.php" method="testUserCanAccessLoginForm" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="SecurityControllerTest.testUserCanLoginWithForm" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Controller\SecurityControllerTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/Controller/SecurityControllerTest.php" method="testUserCanLoginWithForm" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -252,9 +248,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.UserTest" />
-        <item itemvalue="PHPUnit.TaskTest.testSetUser" />
-        <item itemvalue="PHPUnit.TaskTest" />
+        <item itemvalue="PHPUnit.SecurityControllerTest.testUserCanAccessLoginForm" />
+        <item itemvalue="PHPUnit.SecurityControllerTest.testUserCanLoginWithForm" />
+        <item itemvalue="PHPUnit.SecurityControllerTest.testLogin" />
+        <item itemvalue="PHPUnit.SecurityControllerTest" />
+        <item itemvalue="PHPUnit.DefaultControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -278,7 +276,8 @@
       <workItem from="1672122230888" duration="4556000" />
       <workItem from="1672146548166" duration="3598000" />
       <workItem from="1672212098408" duration="1817000" />
-      <workItem from="1672299990907" duration="3186000" />
+      <workItem from="1672299990907" duration="19241000" />
+      <workItem from="1672385229228" duration="1436000" />
     </task>
     <task id="LOCAL-00001" summary="rector(init): command ./vendor/bin/rector init&#10;state 🚧">
       <created>1671014078121</created>
@@ -609,7 +608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672300537590</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="phpunit(functional): config&#10;status: ✅">
+      <created>1672303267537</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1672303267537</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -627,7 +633,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="composer(update)&#10;State ✅" />
     <MESSAGE value="fixes(assert): Exception need array string passed &#10;State ✅" />
     <MESSAGE value="packages(phpstan/symfony): install &#10;State ✅" />
     <MESSAGE value="packages(phpstan/phpstan): install &#10;State ✅" />
@@ -652,10 +657,15 @@
     <MESSAGE value="recipes(update): doctrine/doctrine-bundle&#10;status: ✅" />
     <MESSAGE value="recipes(update): symfony/framework-bundle&#10;status: ✅" />
     <MESSAGE value="recipes(update): symfony/routing&#10;status: ✅" />
-    <option name="LAST_COMMIT_MESSAGE" value="recipes(update): symfony/routing&#10;status: ✅" />
+    <MESSAGE value="phpunit(functional): config&#10;status: ✅" />
+    <option name="LAST_COMMIT_MESSAGE" value="phpunit(functional): config&#10;status: ✅" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ToDoAndC0@DefaultControllerTest_testHomepageWhenUserIsConnected.xml" NAME="DefaultControllerTest.testHomepageWhenUserIsConnected Coverage Results" MODIFIED="1672238130332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ToDoAndC0@DefaultControllerTest.xml" NAME="DefaultControllerTest Coverage Results" MODIFIED="1672303323029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ToDoAndC0@SecurityControllerTest_testUserCanAccessLoginForm.xml" NAME="SecurityControllerTest.testUserCanAccessLoginForm Coverage Results" MODIFIED="1672386531074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ToDoAndC0@UserTest.xml" NAME="UserTest Coverage Results" MODIFIED="1672306467039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ToDoAndC0@DefaultControllerTest_testLogin.xml" NAME="DefaultControllerTest.testLogin Coverage Results" MODIFIED="1672236803429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ToDoAndC0@TaskTest.xml" NAME="TaskTest Coverage Results" MODIFIED="1672306356998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="PhpCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

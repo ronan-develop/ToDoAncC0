@@ -7,6 +7,10 @@ use App\Entity\User;
 use Doctrine\Common\Collections\Collection;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \App\Entity\User
+ * @package App\Tests
+ */
 class UserTest extends TestCase
 {
     public function testGetId()
