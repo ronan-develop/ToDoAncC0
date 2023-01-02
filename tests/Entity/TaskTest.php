@@ -57,7 +57,7 @@ class TaskTest extends KernelTestCase
     public function testIsDone()
     {
         $task = new Task();
-        $this->assertNull($task->isDone());
+        $this->assertFalse($task->isDone());
     }
 
     public function testToggle()
