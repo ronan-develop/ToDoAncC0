@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
  * @covers \App\Entity\Task
- * @uses User
  * @package App\Tests
  */
 class TaskTest extends KernelTestCase
