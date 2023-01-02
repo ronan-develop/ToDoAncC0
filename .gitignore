@@ -114,5 +114,44 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 ###< test-build ###
-/build/
+/reports/coverage/_css/bootstrap.min.css
+/reports/coverage/_css/custom.css
+/reports/coverage/_css/nv.d3.min.css
+/reports/coverage/_css/octicons.css
+/reports/coverage/_css/style.css
+/reports/coverage/_icons/file-code.svg
+/reports/coverage/_icons/file-directory.svg
+/reports/coverage/_js/bootstrap.min.js
+/reports/coverage/_js/d3.min.js
+/reports/coverage/_js/file.js
+/reports/coverage/_js/jquery.min.js
+/reports/coverage/_js/nv.d3.min.js
+/reports/coverage/_js/popper.min.js
+/reports/coverage/Controller/dashboard.html
+/reports/coverage/Controller/DefaultController.php.html
+/reports/coverage/Controller/index.html
+/reports/coverage/Controller/SecurityController.php.html
+/reports/coverage/Controller/TaskController.php.html
+/reports/coverage/Controller/UserController.php.html
+/reports/coverage/Entity/dashboard.html
+/reports/coverage/Entity/index.html
+/reports/coverage/Entity/Task.php.html
+/reports/coverage/Entity/User.php.html
+/reports/coverage/Form/dashboard.html
+/reports/coverage/Form/index.html
+/reports/coverage/Form/TaskType.php.html
+/reports/coverage/Form/UserType.php.html
+/reports/coverage/Repository/dashboard.html
+/reports/coverage/Repository/index.html
+/reports/coverage/Repository/TaskRepository.php.html
+/reports/coverage/Repository/UserRepository.php.html
+/reports/coverage/Security/Voter/dashboard.html
+/reports/coverage/Security/Voter/index.html
+/reports/coverage/Security/Voter/TaskVoter.php.html
+/reports/coverage/Security/dashboard.html
+/reports/coverage/Security/index.html
+/reports/coverage/coverage.xml
+/reports/coverage/dashboard.html
+/reports/coverage/index.html
+/reports/
 ### test-build >###
