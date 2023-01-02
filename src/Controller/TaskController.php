@@ -20,6 +20,10 @@ class TaskController extends AbstractController
     #[Route('/tasks', name: 'task_list', methods: ['GET'])]
     public function list(TaskRepository $taskRepository): Response
     {
+        if (!$this->getUser()){
+            return $this->redirectToRoute("login");
+        }
+
         $tasks = $taskRepository->orderByStatus();
 
         return $this->render(
@@ -28,15 +32,6 @@ class TaskController extends AbstractController
                 'tasks' => $tasks
             ]
         );
-    }
-
-    #[Route('/tasks/show', name: 'task_show', methods: ['GET'])]
-    public function show(TaskRepository $taskRepository): Response
-    {
-        $tasks = $taskRepository->findBy(["user"=>$this->getUser()]);
-        return $this->render('task/list.html.twig', [
-            'tasks'=>$tasks
-        ]);
     }
 
     /**
@@ -52,6 +47,7 @@ class TaskController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $task->setUser($this->getUser());
             $taskRepository->add($task);
 
             $this->addFlash('success', sprintf('La tâche %s a été bien été ajoutée.', $task->getTitle()));
