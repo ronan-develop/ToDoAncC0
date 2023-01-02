@@ -24,7 +24,7 @@ class Task
     private ?string $content = null;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $isDone = null;
+    private ?bool $isDone = false;
 
     #[ORM\ManyToOne(inversedBy: 'tasks')]
     private ?User $user = null;
