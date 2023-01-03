@@ -124,9 +124,10 @@ class UserTest extends TestCase
     public function testToString()
     {
         $user = new User();
-        $username = 'test_username';
-        $user->setUsername($username);
-        $this->assertSame($username, $user->__toString());
+        $user->setUsername('test_username');
+        $result = (string)$user;
+
+        $this->assertEquals('test_username', $result);
     }
 
 }
