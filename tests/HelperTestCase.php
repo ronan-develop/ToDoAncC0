@@ -20,6 +20,7 @@ class HelperTestCase extends WebTestCase
     }
 
     /**
+     * php -dxdebug.mode=coverage bin/phpunit --coverage-clover='reports/coverage/coverage.xml' --coverage-html='reports/coverage'
      * @throws Exception
      */
     protected function getEntityManager(): EntityManagerInterface
@@ -74,14 +75,12 @@ class HelperTestCase extends WebTestCase
     protected function fillLoginFormAsUser(Crawler $crawler): Form
     {
         $buttonCrawlerNode = $crawler->selectButton('Se connecter');
-
         $userRepository = static::getContainer()->get(UserRepository::class);
         $user = $userRepository->findOneBy([]);
 
         $form = $buttonCrawlerNode->form();
         $form['_username'] = $user;
         $form['_password'] = "0000";
-
         return $form;
     }
 
