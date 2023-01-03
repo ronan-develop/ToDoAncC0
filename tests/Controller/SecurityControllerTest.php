@@ -4,7 +4,10 @@ namespace App\Tests\Controller;
 
 use App\Repository\UserRepository;
 use Exception;
+use Generator;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage;
 
@@ -15,23 +18,55 @@ class SecurityControllerTest extends WebTestCase
 {
     /**
      * @covers \App\Controller\SecurityController::login
+     * @dataProvider providePublicUri
+     * @param string $uri
+     * @return void
+     * @throws Exception
      */
-    public function testUserCanAccessLoginForm():void
+    public function testUserNotLoggedInAccessToLogin(string $uri): void
     {
-//        Shuts the kernel down if it was used in the test - called by the tearDown method by default.
         self::ensureKernelShutdown();
         $client = $this->createClient();
-        $client->request('GET', '/login');
-        $this->assertResponseIsSuccessful();
+        $urlGenerator = $this->getContainer()->get('router');
+
+        $client->request(Request::METHOD_GET, $uri);
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertRouteSame('login');
     }
 
     /**
      * @covers \App\Controller\SecurityController::login
+     * @dataProvider providePrivateUri
+     * @param string $uri
+     * @return void
+     * @throws Exception
+     */
+    public function testUserNotLoggedInCannotAccessAnyOtherRoute(string $uri): void
+    {
+        self::ensureKernelShutdown();
+        $client = $this->createClient();
+        $urlGenerator = $this->getContainer()->get('router');
+
+        $client->request(Request::METHOD_GET, $uri);
+        $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);
+        $client->followRedirect();
+        $this->assertRouteSame('login');
+    }
+
+    /**
+     * @covers \App\Controller\SecurityController::login
+     * @throws Exception
      */
     public function testUserCanLoginWithForm(): void
     {
+        self::ensureKernelShutdown();
         $client = $this->createClient();
-        $crawler = $client->request('GET', '/login');
+        $urlGenerator = $this->getContainer()->get('router');
+
+        $crawler = $client->request(
+            Request::METHOD_GET,
+            $urlGenerator->generate('login')
+        );
 
         $buttonCrawlerNode = $crawler->selectButton('Se connecter');
         $form = $buttonCrawlerNode->form();
@@ -72,13 +107,14 @@ class SecurityControllerTest extends WebTestCase
     /**
      * @throws Exception
      */
-    public function testLogout()
+    public function testLogout(): void
     {
+        self::ensureKernelShutdown();
         $client = static::createClient();
         $userRepository = static::getContainer()->get(UserRepository::class);
 
         $session = new Session(new MockFileSessionStorage());
-        $user = $userRepository->findOneBy([]);
+        $user = $userRepository->findOneBy(["username"=>"Admin"]);
         $client->loginUser($user);
         $client->request('GET', '/logout');
         $this->assertEquals(null, $session->get('user'));
@@ -86,5 +122,25 @@ class SecurityControllerTest extends WebTestCase
         $client->followRedirect();
         $this->assertSelectorTextContains("h1", "Connexion");
         $this->assertResponseStatusCodeSame(200);
+    }
+
+    /**
+     * @return Generator
+     */
+    public function providePrivateUri(): Generator
+    {
+        yield ['/'];
+        yield ['/tasks'];
+        yield ['/tasks/create'];
+        yield ['/users'];
+        yield ['/users/create'];
+    }
+
+    /**
+     * @return Generator
+     */
+    protected function providePublicUri(): Generator
+    {
+        yield ['/login'];
     }
 }
