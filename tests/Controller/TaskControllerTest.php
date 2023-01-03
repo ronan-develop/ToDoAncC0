@@ -6,7 +6,6 @@ use App\Entity\User;
 use Exception;
 use App\Entity\Task;
 use App\Tests\HelperTestCase;
-use JetBrains\PhpStorm\NoReturn;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Router;
@@ -19,10 +18,11 @@ class TaskControllerTest extends HelperTestCase
      */
     public function testUserCannotListTaskWhileIsNotConnected()
     {
-        $client = static::createClient() ;
+        $client = static::createClient();
+        $urlGenerator = $this->getContainer()->get('router');
 
         $this->setUserNullInSession();
-        $client->request('GET', '/tasks');
+        $client->request(Request::METHOD_GET, $urlGenerator->generate('task_list'));
         $this->assertEquals(302, $client->getResponse()->getStatusCode());
 
         $crawler = $client->followRedirect();
@@ -196,68 +196,70 @@ class TaskControllerTest extends HelperTestCase
      * @covers \App\Controller\TaskController::deleteTask
      * @throws Exception
      */
-//    public function testOwnerCanDeleteTask(): void
-//    {
-//        $client = static::createClient();
-//
-//        /** @var Router $urlGenerator */
-//        $urlGenerator = $client->getContainer()->get('router');
-//
-//        $taskRepo = $this->getEntityManager()->getRepository(Task::class);
-//        $task = $taskRepo->find(1);
-//        $taskId = $task->getId();
-//        $author = $task->getUser();
-//        $client->loginUser($author);
-//
-//        $client->request(
-//            Request::METHOD_GET,
-//            $urlGenerator->generate("task_delete", [
-//                "id" => $taskId
-//            ])
-//        );
-//
-//        $this->assertResponseStatusCodeSame(302);
-//        $this->assertNull($taskRepo->find(1));
-//    }
+    public function testOwnerCanDeleteTask(): void
+    {
+        $client = static::createClient();
+
+        /** @var Router $urlGenerator */
+        $urlGenerator = $client->getContainer()->get('router');
+
+        $taskRepo = $this->getEntityManager()->getRepository(Task::class);
+        $task = $taskRepo->find(1);
+        $taskId = $task->getId();
+        $author = $task->getUser();
+        $client->loginUser($author);
+
+        $client->request(
+            Request::METHOD_DELETE,
+            $urlGenerator->generate("task_delete", [
+                "id" => $taskId
+            ])
+        );
+        $this->assertRouteSame('task_delete');
+        dd($client->getResponse());
+
+        $this->assertResponseStatusCodeSame(302);
+        $this->assertNull($taskRepo->find(1));
+    }
 
     /**
      * @covers \App\Controller\TaskController::deleteTask
      * @throws Exception
      */
-//    public function testCannotDeleteTAskIfNotOwner()
-//    {
-//        $client = $this->createClient();
-//        $taskRepo = $this->getEntityManager()->getRepository(Task::class);
-//
-//        /** @var Router $urlGenerator */
-//        $urlGenerator = $client->getContainer()->get('router');
-//
-//        // reference
-//        $task = $taskRepo->find(2);
-//        $taskId = $task->getId();
-//        $author = $task->getUser();
-//
-//        // task with another user
-//        $taskWithAnotherUser = $taskRepo->createQueryBuilder("t")
-//            ->where('NOT t.user = :user')
-//            ->setParameter('user', $author)
-//            ->setFirstResult(1)
-//            ->setMaxResults(1)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//        // the other user
-//        $anotherAuthor = $taskWithAnotherUser[0]->getUser();
-//        $this->assertNotSame($author, $anotherAuthor);
-//
-//        $client->loginUser($anotherAuthor);
-//        $client->request(
-//            Request::METHOD_GET,
-//            $urlGenerator->generate("task_delete",[
-//                'id' => $taskId
-//            ])
-//        );
-//        $client->followRedirect();
-//
-//    }
+    public function testCannotDeleteTAskIfNotOwner()
+    {
+        $client = $this->createClient();
+        $taskRepo = $this->getEntityManager()->getRepository(Task::class);
+
+        /** @var Router $urlGenerator */
+        $urlGenerator = $client->getContainer()->get('router');
+
+        // reference
+        $task = $taskRepo->find(2);
+        $taskId = $task->getId();
+        $author = $task->getUser();
+
+        // task with another user
+        $taskWithAnotherUser = $taskRepo->createQueryBuilder("t")
+            ->where('NOT t.user = :user')
+            ->setParameter('user', $author)
+            ->setFirstResult(1)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+        // the other user
+        $anotherAuthor = $taskWithAnotherUser[0]->getUser();
+        $this->assertNotSame($author, $anotherAuthor);
+
+        $client->loginUser($anotherAuthor);
+        $client->request(
+            Request::METHOD_GET,
+            $urlGenerator->generate("task_delete",[
+                'id' => $taskId
+            ])
+        );
+        $client->followRedirect();
+
+    }
 }
