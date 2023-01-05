@@ -34,13 +34,13 @@
             <directory suffix=".php">src/Test</directory>
             <directory suffix=".php">src/Form</directory>
             <directory suffix=".php">src/Repository</directory>
+            <directory suffix=".php">src/Security</directory>
             <file>src/Kernel.php</file>
         </exclude>
     </coverage>
     <extensions>
         <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension" />
     </extensions>
-
 
     <listeners>
         <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener">
