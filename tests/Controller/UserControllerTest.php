@@ -13,9 +13,10 @@ use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 class UserControllerTest extends HelperTestCase
 {
     /**
+     * @covers \App\Controller\UserController::list
      * @throws Exception
      */
-    public function testAdminCanListUser(): void
+    public function testAdminCanListUserWhenNotLogged(): void
     {
         // make sure no user in session
         $this->setUserNullInSession();
@@ -25,7 +26,7 @@ class UserControllerTest extends HelperTestCase
 
         $this->assertResponseRedirects('http://localhost/login');
 
-        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertEquals(\Symfony\Component\HttpFoundation\Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $crawler = $client->followRedirect();
 
@@ -48,63 +49,42 @@ class UserControllerTest extends HelperTestCase
     }
 
     /**
+     * @covers \App\Controller\UserController::list
      * @throws Exception
      */
-    public function testRedirectIfNotLogged()
+    public function testAdminCanListUserWhenLogged()
+    {
+        $client = static::createClient();
+        $urlGenerator = $this->getContainer()->get('router');
+        $userRepository = $this->getEntityManager()->getRepository(User::class);
+        $admin = $userRepository->findOneBy(["username" => "Admin"]);
+
+        $client->loginUser($admin, 'secured_area');
+        $client->request(
+            Request::METHOD_GET,
+            $urlGenerator->generate("user_list")
+        );
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertSelectorTextContains('h1', 'Liste des utilisateurs');
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function testRedirectToLoginIfNotLogged()
     {
         $client = static::createClient();
         $client->followRedirects();
 
         $urlGenerator = $client->getContainer()->get('router');
         $userRepo = $this->getEntityManager()->getRepository(User::class);
-        $user = $userRepo->findOneBy([]);
-        $client->loginUser($user);
 
         $crawler = $client->request(
             Request::METHOD_GET,
             $urlGenerator->generate('user_list')
         );
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-        if(!$user) {
-            $this->assertResponseRedirects('login',Response::HTTP_FOUND);
-        }
-    }
-
-    /**
-     * @throws Exception
-     */
-    public function testAdminCanAccessListAfterLogin()
-    {
-        $session = new Session(new MockArraySessionStorage());
-        $session->start();
-        $session->set('user', null);
-
-        $client = static::createClient();
-        $crawler =  $client->request('GET', '/users');
-
-        $this->assertResponseRedirects('http://localhost/login');
-
-        $this->assertEquals(302, $client->getResponse()->getStatusCode());
-
-        $crawler = $client->followRedirect();
-
-        $client->request('GET', '/login');
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Connexion');
-
-        $buttonCrawlerNode = $crawler->selectButton('Se connecter');
-
-        $form = $buttonCrawlerNode->form();
-        $form['_username'] = "Admin";
-        $form['_password'] = "0000";
-
-        $client->submit($form);
-        $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);
-        $client->followRedirect();
-        $this->assertResponseIsSuccessful(Response::HTTP_OK);
-        $this->assertSelectorTextContains(
-            "h1", "Liste des utilisateurs"
-        );
+        $this->assertRouteSame('login');
     }
 
     /**
@@ -121,7 +101,7 @@ class UserControllerTest extends HelperTestCase
 
         $this->assertResponseRedirects('http://localhost/login');
 
-        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertEquals(\Symfony\Component\HttpFoundation\Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $crawler = $client->followRedirect();
 
@@ -153,7 +133,7 @@ class UserControllerTest extends HelperTestCase
 
         $this->assertResponseRedirects('http://localhost/login');
 
-        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertEquals(\Symfony\Component\HttpFoundation\Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $crawler = $client->followRedirect();
 
@@ -183,31 +163,61 @@ class UserControllerTest extends HelperTestCase
     /**
      * @throws Exception
      */
-//    public function testAdminCanCreateUser()
-//    {
-//        $client = static::createClient();
-//        $admin = $this->getEntityManager()->getRepository(User::class)->findOneBy(["username" => "Admin"]);
-//        $client->loginUser($admin);
-//        $crawler = $client->request(
-//            Request::METHOD_GET, $this->getContainer()->get('router')->generate("user_create")
-//        );
-//        $client->followRedirect();
-//        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-//        $form = $crawler->selectButton('Ajouter')->form([
-//            'user[username]' => 'toto',
-//            'user[roles]' => 'ROLE_USER',
-//            'user[password][first]' => '0000',
-//            'user[password][second]' => '0000',
-//            'user[email]' => 'toto@domain.fr'
-//        ]);
-//        $client->submit($form);
-//
-//        $newUser = $this->getEntityManager()->getRepository(User::class)->findOneBy([
-//            'username' => 'testUsername'
-//        ]);
-//
-//        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-//        $this->assertSelectorExists('.alert-success');
-//        $this->assertSelectorExists('label', 'Mot de passe');
-//    }
+    public function testAdminCanCreate(): void
+    {
+        $client = static::createClient();
+        $urlGenerator = $this->getContainer()->get('router');
+        $userRepository = $this->getEntityManager()->getRepository(User::class);
+        $admin = $userRepository->findOneBy(["username" => "Admin"]);
+
+        $client->loginUser($admin, 'secured_area');
+        $client->request(
+            Request::METHOD_GET,
+            $urlGenerator->generate("user_create")
+        );
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertSelectorExists('form[name="user"]');
+        $this->assertSelectorExists('input[id="user_username"]');
+
+        $newUser = $client->submitForm('Ajouter', [
+            "user[username]" => "test",
+            "user[password][first]" => "0000",
+            "user[password][second]" => "0000",
+            "user[email]" => "test@domain.fr",
+            "user[roles]" => "ROLE_USER"
+        ]);
+        $client->followRedirect();
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertSelectorExists('.alert-success');
+        $this->assertEquals("test", $userRepository->findOneBy(['username'=>'test'])->getUserIdentifier());
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function testAdminAuthenticatedEditUser()
+    {
+        $client = static::createClient();
+        $userRepo = $this->getEntityManager()->getRepository(User::class);
+        $urlGenerator = $this->getContainer()->get('router');
+        $admin = $userRepo->findOneBy(["username" => "Admin"]);
+        $client->loginUser($admin, 'secured_area');
+
+        $user = $userRepo->findOneBy(['username' => 'roux.nathalie']);
+        $userId = $user->getId();
+        $crawler = $client->request(Request::METHOD_GET, $urlGenerator->generate('user_edit', [
+            'id' => $userId
+        ]));
+
+        $client->submitForm('Modifier', [
+            'user[username]' => 'toto',
+            'user[email]' => 'toto@domain.fr',
+            'user[roles]' => 'ROLE_USER',
+        ]);
+
+        $this->assertResponseRedirects('/users', Response::HTTP_FOUND);
+        $client->followRedirect();
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertSelectorExists('.alert-success');
+    }
 }

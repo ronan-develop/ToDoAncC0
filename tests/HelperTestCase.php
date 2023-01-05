@@ -48,16 +48,6 @@ class HelperTestCase extends WebTestCase
         return $this->sessionStart();
     }
 
-    /**
-     * @throws Exception
-     */
-    protected function  setUserInSession(): Session
-    {
-        $user = $userRepo = static::getContainer()->get(UserRepository::class);        $user = $userRepo->findOneBy([]);
-        $this->sessionStart()->set('user', $user);
-        return $this->sessionStart();
-    }
-
     protected function fillLoginFormAsAdmin(Crawler $crawler): Form
     {
         $buttonCrawlerNode = $crawler->selectButton('Se connecter');

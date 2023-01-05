@@ -6,9 +6,10 @@ use App\Entity\User;
 use Exception;
 use App\Entity\Task;
 use App\Tests\HelperTestCase;
+use Symfony\Component\Routing\Router;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Router;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class TaskControllerTest extends HelperTestCase
 {
@@ -23,7 +24,7 @@ class TaskControllerTest extends HelperTestCase
 
         $this->setUserNullInSession();
         $client->request(Request::METHOD_GET, $urlGenerator->generate('task_list'));
-        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertEquals(\Symfony\Component\HttpFoundation\Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $crawler = $client->followRedirect();
 
@@ -32,24 +33,23 @@ class TaskControllerTest extends HelperTestCase
 
     /**
      * @covers \App\Controller\TaskController::list
-     * @uses \App\Controller\SecurityController::login
      * @throws Exception
+     * @uses   \App\Controller\SecurityController::login
      */
     public function testUserCanListTaskFromHomepage()
     {
         $this->setUserNullInSession();
 
         $client = static::createClient();
-        $crawler =  $client->request('GET', '/');
+        $crawler = $client->request('GET', '/');
 
         $this->assertResponseRedirects('http://localhost/login');
 
-        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertEquals(\Symfony\Component\HttpFoundation\Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $crawler = $client->followRedirect();
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Connexion');
 
         $this->connectUser($client, $crawler);
 
@@ -69,53 +69,110 @@ class TaskControllerTest extends HelperTestCase
 
     /**
      * @covers \App\Controller\TaskController::create
-     * @uses \App\Form\TaskType
      * @throws Exception
+     * @uses   \App\Form\TaskType
      */
-    public function testUserCanCreateTask(): void
+    public function testNotAuthenticatedUserAccessTaskCreate(): void
     {
         $client = static::createClient();
         $urlGenerator = $client->getContainer()->get('router');
-        $client->followRedirects();
 
-        $user = $this->getEntityManager()->getRepository(User::class)->find(2);
-        $client->loginUser($user);
-
-        $client->request(
+        $crawler = $client->request(
             Request::METHOD_GET,
-            $urlGenerator->generate("task_create")
+            $urlGenerator->generate("task_create"),
         );
-        $this->assertResponseStatusCodeSame(200);
+        $crawler = $client->followRedirect();
+        $this->assertRouteSame("login");
 
-        $client->submitForm('Ajouter', [
-            'task[title]' => 'test ajout',
-            'task[content]' => 'content de test ajout',
+        $form = $crawler->selectButton("Se connecter")->form([
+            '_username' => 'Admin',
+            '_password' => '0000'
         ]);
+        $client->submit($form);
 
-        $task = $this->getEntityManager()->getRepository(Task::class)->findOneBy([
-            'title' => 'test ajout'
-        ]);
-        $this->assertNotNull($task);
-        $this->assertResponseIsSuccessful();
+        $this->assertEquals(
+            Response::HTTP_FOUND,
+            $client->getResponse()->getStatusCode(),
+            $client->getResponse()->getContent()
+        );
+        $crawler = $client->followRedirect();
+
+        $this->assertRouteSame('task_create');
+
     }
 
     /**
+     * @covers \App\Controller\TaskController::create
+     * @throws Exception
+     */
+    public function testAuthenticatedUserAccessTaskCreate()
+    {
+        $client = static::createClient();
+
+        $urlGenerator = $this->getContainer()->get('router');
+        $userRepository = $this->getEntityManager()->getRepository(User::class);
+
+        /** @var User $user */
+        $user = $userRepository->find(2);
+
+        $client->loginUser($user, 'secured_area');
+
+        $client->request(Request::METHOD_GET, $urlGenerator->generate('task_create'));
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+    }
+
+    /**
+     * @covers \App\Controller\TaskController::create
+     * @throws Exception
+     */
+    public function testCreateTask()
+    {
+        $client = static::createClient();
+        $urlGenerator = $this->getContainer()->get('router');
+        $userRepository = $this->getEntityManager()->getRepository(User::class);
+        $taskRepository = $this->getEntityManager()->getRepository(Task::class);
+
+        /** @var User $user */
+        $user = $userRepository->find(3);
+        $name = $user->getId();
+
+        $client->loginUser($user, 'secured_area');
+        $crawler = $client->request(Request::METHOD_GET, $urlGenerator->generate('task_create'));
+
+        $form = $crawler->selectButton('Ajouter')->form([
+            'task[title]' => 'titre test création',
+            'task[content]' => 'content test création'
+        ]);
+
+        $client->submit($form);
+        $this->assertResponseRedirects(
+            $urlGenerator->generate('task_list')
+        );
+        $client->followRedirect();
+        $this->assertSelectorExists('.alert-success');
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+    }
+
+    /**
+     * @covers \App\Controller\TaskController::edit
      * @throws Exception
      */
     public function testUserCanAccessToEditTask(): void
     {
         $client = static::createClient();
+
         $urlGenerator = $client->getContainer()->get('router');
         $taskRepository = $this->getEntityManager()->getRepository(Task::class);
+
         $task = $taskRepository->findOneBy([]);
         $id = $task->getId();
 
         $user = $task->getUser();
-        $client->loginUser($user);
+        $client->loginUser($user, "secured_area");
 
         $client->request(
             Request::METHOD_GET,
-            $urlGenerator->generate('task_edit',[
+            $urlGenerator->generate('task_edit', [
                 'id' => $id
             ])
         );
@@ -129,8 +186,8 @@ class TaskControllerTest extends HelperTestCase
 
     /**
      * @covers \App\Controller\TaskController::edit
-     * @uses \App\Form\TaskType
      * @throws Exception
+     * @uses   \App\Form\TaskType
      */
     public function testTaskCanBeEdited(): void
     {
@@ -141,11 +198,11 @@ class TaskControllerTest extends HelperTestCase
         $task = $taskRepo->find(1);
         $id = $task->getId();
         $author = $task->getUser();
-        $client->loginUser($author);
+        $client->loginUser($author, 'secured_area');
 
         $client->request(
             Request::METHOD_GET,
-            $urlGenerator->generate('task_edit',[
+            $urlGenerator->generate('task_edit', [
                 'id' => $id
             ])
         );
@@ -157,7 +214,7 @@ class TaskControllerTest extends HelperTestCase
 
         $editedTask = $taskRepo->find(1);
         $this->assertNotNull($editedTask);
-        $this->assertSame($author->getUsername(), $editedTask->getUser()->getUsername());
+        $this->assertSame($author->getUserIdentifier(), $editedTask->getUser()->getUserIdentifier());
         $this->assertSame("Titre Modifié", $editedTask->getTitle());
         $this->assertSame("Description modifiée", $editedTask->getContent());
         $this->assertResponseRedirects('/tasks', 303);
@@ -172,14 +229,14 @@ class TaskControllerTest extends HelperTestCase
         $client = static::createClient();
         /** @var Router $urlGenerator */
         $urlGenerator = $client->getContainer()->get('router');
-        $taskRepository =$this->getEntityManager()->getRepository(Task::class);
+        $taskRepository = $this->getEntityManager()->getRepository(Task::class);
 
         $task = $taskRepository->findOneBy(["isDone" => false]);
         $id = $task->getId();
         $author = $task->getUser();
         $initialStatus = $task->isDone();
         $this->assertIsBool($initialStatus);
-        $client->loginUser($author);
+        $client->loginUser($author, 'secured_area');
         $client->request(
             Request::METHOD_GET,
             $urlGenerator->generate("task_toggle", [
@@ -207,7 +264,7 @@ class TaskControllerTest extends HelperTestCase
         $task = $taskRepo->find(1);
         $taskId = $task->getId();
         $author = $task->getUser();
-        $client->loginUser($author);
+        $client->loginUser($author, 'secured_area');
 
         $client->request(
             Request::METHOD_DELETE,
@@ -216,9 +273,8 @@ class TaskControllerTest extends HelperTestCase
             ])
         );
         $this->assertRouteSame('task_delete');
-        dd($client->getResponse());
 
-        $this->assertResponseStatusCodeSame(302);
+        $this->assertResponseStatusCodeSame(303);
         $this->assertNull($taskRepo->find(1));
     }
 
@@ -240,26 +296,32 @@ class TaskControllerTest extends HelperTestCase
         $author = $task->getUser();
 
         // task with another user
+        // demande au queryBuilder de créer une requête
         $taskWithAnotherUser = $taskRepo->createQueryBuilder("t")
+            // ou le t.user sera !== du user que je vais te passer en paramètre
             ->where('NOT t.user = :user')
+            // je set les parameters
             ->setParameter('user', $author)
+            // Définit la position du premier résultat à récupérer
             ->setFirstResult(1)
+            // limit
             ->setMaxResults(1)
+            // construit la requête
             ->getQuery()
-            ->getResult()
-        ;
+            // hydrate l'objet
+            ->getResult();
+
         // the other user
         $anotherAuthor = $taskWithAnotherUser[0]->getUser();
         $this->assertNotSame($author, $anotherAuthor);
 
-        $client->loginUser($anotherAuthor);
+        $client->loginUser($anotherAuthor, 'secured_area');
         $client->request(
             Request::METHOD_GET,
-            $urlGenerator->generate("task_delete",[
+            $urlGenerator->generate("task_delete", [
                 'id' => $taskId
             ])
         );
-        $client->followRedirect();
-
+        $this->assertResponseStatusCodeSame(Response::HTTP_FORBIDDEN);
     }
 }

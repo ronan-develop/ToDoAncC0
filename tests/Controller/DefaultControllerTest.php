@@ -19,6 +19,7 @@ class DefaultControllerTest extends HelperTestCase
      */
     public function testAccessHomepageByLoginForm()
     {
+        self::ensureKernelShutdown();
         $session = new Session(new MockArraySessionStorage());
         $session->start();
         $session->set('user', null);
@@ -28,7 +29,7 @@ class DefaultControllerTest extends HelperTestCase
 
         $this->assertResponseRedirects('http://localhost/login');
 
-        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertEquals(\Symfony\Component\HttpFoundation\Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
 
         $crawler = $client->followRedirect();
 
@@ -57,6 +58,7 @@ class DefaultControllerTest extends HelperTestCase
      */
     public function testIndex(): void
     {
+        self::ensureKernelShutdown();
         $session = new Session(new MockArraySessionStorage());
         $session->start();
         $session->set('user', null);
@@ -64,7 +66,7 @@ class DefaultControllerTest extends HelperTestCase
         $client = static::createClient();
         $client->request('GET', '/');
         $this->assertResponseRedirects('http://localhost/login');
-        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertEquals(\Symfony\Component\HttpFoundation\Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
         $client->followRedirect();
 
         $client->request('GET', '/login');
@@ -78,6 +80,7 @@ class DefaultControllerTest extends HelperTestCase
      */
     public function testCanAccessHomepageWhenConnected()
     {
+        self::ensureKernelShutdown();
         $client = static::createClient();
         $client->followRedirects();
 
@@ -94,5 +97,15 @@ class DefaultControllerTest extends HelperTestCase
         if(!$user) {
             $this->assertResponseRedirects('login',Response::HTTP_FOUND);
         }
+    }
+
+    public function testNotLoggedHomepage()
+    {
+        self::ensureKernelShutdown();
+        $client = static::createClient();
+        $client->request('GET', '/');
+        $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);
+        $client->followRedirect();
+        $this->assertSelectorExists('label', 'Mot de passe');
     }
 }

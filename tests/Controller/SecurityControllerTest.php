@@ -124,6 +124,19 @@ class SecurityControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(200);
     }
 
+    public function testAnotherLogout()
+    {
+        $client = static::createClient([], [
+            'PHP_AUTH_USER' => 'Admin',
+            'PHP_AUTH_PW'   => '0000'
+        ]);
+        $client->request('GET', '/logout');
+        $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);
+        $client->followRedirect();
+        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
+        $this->assertSelectorExists('label', 'Mot de passe');
+    }
+
     /**
      * @return Generator
      */
