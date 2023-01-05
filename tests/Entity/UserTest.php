@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \App\Entity\User
- * @package App\Tests
+ * @package \App\Tests
  */
 class UserTest extends TestCase
 {
