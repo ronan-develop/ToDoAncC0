@@ -20,10 +20,6 @@ class TaskController extends AbstractController
     #[Route('/tasks', name: 'task_list', methods: ['GET'])]
     public function list(TaskRepository $taskRepository): Response
     {
-        if (!$this->getUser()){
-            return $this->redirectToRoute("login");
-        }
-
         $tasks = $taskRepository->orderByStatus();
 
         return $this->render(
