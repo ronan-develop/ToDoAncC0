@@ -154,4 +154,11 @@ yarn-error.log
 /reports/coverage/dashboard.html
 /reports/coverage/index.html
 /reports/
-### test-build >###
+###> test-build ###
+###< tools ###
+/tools/
+###> tools ###
+
+/tools/php-cs-fixer/vendor/composer/tmp-75138cd138e5217949fb5daaa54a3adc
+/tools/php-cs-fixer/composer.json
+/tools/php-cs-fixer/composer.lock
