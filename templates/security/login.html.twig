@@ -4,15 +4,15 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 {% endblock %}
 
 {% block body %}
     {% if error %}
         <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
-
-    <form action="{{ path('login_check') }}" method="post">
+    <h1>Connexion</h1>
+    <form name="login" action="{{ path('login_check') }}" method="post">
         <label for="username">Nom d'utilisateur :</label>
         <input type="text" id="username" name="_username" value="{{ last_username }}"/>
 

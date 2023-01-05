@@ -22,6 +22,10 @@ security:
         main:
             lazy: true
             provider: app_user_provider
+            form_login:
+                login_path: login
+                check_path: login_check
+                default_target_path: homepage
 
                 # where to redirect after logout
 
@@ -37,9 +41,9 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-                - { path: ^/$, roles: ROLE_USER} # redirect if not logged
-                - { path: ^/users, roles: ROLE_ADMIN }
-    #            - { path: ^/tasks, roles: ROLE_USER }
+        - { path: ^/$, roles: ROLE_USER } # redirect if not logged
+        - { path: ^/users, roles: ROLE_ADMIN }
+        - { path: ^/tasks, roles: ROLE_USER }
 
 
 when@test:

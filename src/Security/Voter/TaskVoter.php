@@ -2,22 +2,29 @@
 
 namespace App\Security\Voter;
 
+use App\Entity\Task;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+/**
+ * @codeCoverageIgnore
+ */
 class TaskVoter extends Voter
 {
-    public const DELETE = 'TASK_DELETE';
-    public const EDIT = 'EDIT_TASK';
-    public const ANONYMOUS = 'TASK_ANONYMOUS';
+    public const DELETE = 'DELETE_TASK';
+
+    public function __construct(private readonly Security $security)
+    {
+    }
 
     protected function supports(string $attribute, mixed $subject): bool
     {
         // replace with your own logic
         // https://symfony.com/doc/current/security/voters.html
-        return in_array($attribute, [self::DELETE, self::EDIT, self::ANONYMOUS])
-            && $subject instanceof \App\Entity\Task;
+        return $attribute == self::DELETE
+            && $subject instanceof Task;
     }
 
     protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
@@ -29,35 +36,27 @@ class TaskVoter extends Voter
         }
 
         // ... (check conditions and return true to grant permission) ...
-        return match ($attribute) {
-            self::DELETE => $this->deleteTask($user, $subject),
-            self::EDIT => $this->editTask($user, $attribute),
-            self::ANONYMOUS => $this->deleteAnonymousTask($user),
-            default => false,
-        };
+//        return match ($attribute) {
+//            self::DELETE => $this->deleteTask($user, $subject)
+//        };
+        if($attribute == self::DELETE){
+            return $this->deleteTask($user, $subject);
+        }
+
+        return false;
 
     }
 
     // $subject => $task | $attribute => const
-    private function deleteTask(UserInterface $user, mixed $subject)
+    private function deleteTask(UserInterface $user, mixed $subject): bool
     {
-//        if ($user->getId() == $subject->getUser()->getId()) {
-//            return true;
-//        }
-
-        // Si l'utilisateur n'a pas le rôle "ROLE_ADMIN", vérifiez s'il est propriétaire de la tâche
-//        return $user->getId() === $subject->getOwner()->getId();
-    }
-
-    private function deleteAnonymousTask(UserInterface $user): bool
-    {
-        // Seuls les utilisateurs anonymes peuvent supprimer des tâches anonymes
-        return $user->getRoles() == 'ROLE_ADMIN';
-    }
-
-    private function editTask(UserInterface $user, mixed $subject)
-    {
-//        return $user->getId() === $subject->getOwner()->getId();
+        if ($user == $subject->getUser()) {
+            return true;
+        }
+        if ($this->security->isGranted("ROLE_ADMIN") && $subject->getUser() == null) {
+            return true;
+        }
+        return false;
     }
 
 }

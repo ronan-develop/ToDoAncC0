@@ -23,9 +23,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank(message: "Le champ username ne peut être vide")]
     private ?string $username = null;
 
-    #[ORM\Column]
+    /**
+     * @var array<string>
+     */
+    #[ORM\Column(type: 'json')]
     private array $roles = [];
-
     /**
      * @var string The hashed password
      */
@@ -44,6 +46,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __toString(): string
     {
+        if($this->username == null){
+            return 'null';
+        }
         return $this->username;
     }
 
@@ -76,8 +81,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @see UserInterface
+     * @return string[]
      */
-    public function getRoles(): array
+    public function getRoles():array
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
@@ -86,6 +92,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
+    /**
+     * @param array<string> $roles
+     * @return $this
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -94,6 +104,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
+     * @return string|null
      * @see PasswordAuthenticatedUserInterface
      */
     public function getPassword(): ?string
@@ -101,6 +112,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
+    /**
+     * @param string $password
+     * @return $this
+     */
     public function setPassword(string $password): self
     {
         $this->password = $password;
@@ -111,7 +126,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see UserInterface
      */
-    public function eraseCredentials()
+    public function eraseCredentials():void
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;

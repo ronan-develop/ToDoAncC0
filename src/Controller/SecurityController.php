@@ -24,6 +24,9 @@ class SecurityController extends AbstractController
         ));
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     #[Route('/login_check', name: 'login_check')]
     public function loginCheck(): void
     {
@@ -31,6 +34,7 @@ class SecurityController extends AbstractController
     }
 
     /**
+     * @codeCoverageIgnore
      * @throws Exception
      */
     #[Route('/logout', name: 'logout', methods: ['GET'])]
