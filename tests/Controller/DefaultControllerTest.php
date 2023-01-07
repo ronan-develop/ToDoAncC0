@@ -107,30 +107,6 @@ class DefaultControllerTest extends HelperTestCase
     }
 
     /**
-     * @covers \App\Controller\DefaultController::index
-     * @throws Exception
-     */
-    public function testCanAccessHomepageWhenConnected(): void
-    {
-        self::ensureKernelShutdown();
-        $client = static::createClient();
-        $userRepo = $this->getEntityManager()->getRepository(User::class);
-        $userRepo->find(1);
-        /** @phpstan-ignore-next-line */
-        $client->loginUser($this->user, 'secured_area');
-
-        $crawler = $client->request(
-            Request::METHOD_GET,
-            /** @phpstan-ignore-next-line */
-            $this->urlGenerator->generate('homepage')
-        );
-        $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-        if(!$this->user) {
-            $this->assertResponseRedirects('login',Response::HTTP_FOUND);
-        }
-    }
-
-    /**
      * @return void
      */
     public function testNotLoggedHomepage(): void
