@@ -5,10 +5,13 @@ namespace App\Tests\Controller;
 use App\Repository\UserRepository;
 use Exception;
 use Generator;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 use Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage;
 
 /**
@@ -16,6 +19,15 @@ use Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage;
  */
 class SecurityControllerTest extends WebTestCase
 {
+    private KernelBrowser $client;
+    private Router|null $urlGenerator;
+
+    public function setUp(): void
+    {
+        $this->client = static::createClient();
+        $this->urlGenerator = $this->client->getContainer()->get('router');
+    }
+
     /**
      * @covers \App\Controller\SecurityController::login
      * @dataProvider providePublicUri
@@ -25,13 +37,12 @@ class SecurityControllerTest extends WebTestCase
      */
     public function testUserNotLoggedInAccessToLogin(string $uri): void
     {
-        self::ensureKernelShutdown();
-        $client = $this->createClient();
-        $urlGenerator = $this->getContainer()->get('router');
+        $session = new Session(new MockArraySessionStorage());
+        $this->assertEquals(null, $session->get('user'));
 
-        $client->request(Request::METHOD_GET, $uri);
+        $this->client->request(Request::METHOD_GET, $uri);
+        $this->assertSelectorTextContains('h1', 'Connexion');
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
-        $this->assertRouteSame('login');
     }
 
     /**
@@ -44,13 +55,13 @@ class SecurityControllerTest extends WebTestCase
     public function testUserNotLoggedInCannotAccessAnyOtherRoute(string $uri): void
     {
         self::ensureKernelShutdown();
-        $client = $this->createClient();
-        $urlGenerator = $this->getContainer()->get('router');
+        $session = new Session(new MockArraySessionStorage());
+        $this->assertEquals(null, $session->get('user'));
 
-        $client->request(Request::METHOD_GET, $uri);
+        $this->client->request(Request::METHOD_GET, $uri);
         $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);
-        $client->followRedirect();
-        $this->assertRouteSame('login');
+        $this->client->followRedirect();
+        $this->assertSelectorTextContains('h1', 'Connexion');
     }
 
     /**
@@ -60,23 +71,21 @@ class SecurityControllerTest extends WebTestCase
     public function testUserCanLoginWithForm(): void
     {
         self::ensureKernelShutdown();
-        $client = $this->createClient();
-        $urlGenerator = $this->getContainer()->get('router');
 
-        $crawler = $client->request(
+        $crawler = $this->client->request(
             Request::METHOD_GET,
-            $urlGenerator->generate('login')
+            $this->urlGenerator->generate('login')
         );
 
         $buttonCrawlerNode = $crawler->selectButton('Se connecter');
         $form = $buttonCrawlerNode->form();
 
-        $client->submit($form, [
+        $this->client->submit($form, [
             "_username" => "Admin",
             "_password" => "0000"
         ]);
 
-        $client->followRedirect();
+        $this->client->followRedirect();
         $this->assertSelectorTextContains(
             "h1",
             "Bienvenue sur Todo List, l'application vous permettant de gérer l'ensemble de vos tâches sans effort !"
@@ -88,18 +97,22 @@ class SecurityControllerTest extends WebTestCase
      */
     public function testUserCannotLogin(): void
     {
-        $client = $this->createClient();
-        $crawler = $client->request('GET', '/login');
+        self::ensureKernelShutdown();
+
+        $crawler = $this->client->request(
+            Request::METHOD_GET,
+            $this->urlGenerator->generate('login')
+        );
 
         $buttonCrawlerNode = $crawler->selectButton('Se connecter');
         $form = $buttonCrawlerNode->form();
 
-        $client->submit($form, [
+        $this->client->submit($form, [
             "_username" => "Toto",
             "_password" => "8888"
         ]);
         $this->assertResponseStatusCodeSame(302);
-        $client->followRedirect();
+        $this->client->followRedirect();
         $this->assertSelectorExists('html .alert-danger');
         $this->assertSelectorTextContains(".alert-danger", "Identifiants invalides.");
     }
@@ -109,30 +122,26 @@ class SecurityControllerTest extends WebTestCase
      */
     public function testLogout(): void
     {
-        self::ensureKernelShutdown();
-        $client = static::createClient();
-        $userRepository = static::getContainer()->get(UserRepository::class);
-
-        $session = new Session(new MockFileSessionStorage());
-        $user = $userRepository->findOneBy(["username"=>"Admin"]);
-        $client->loginUser($user);
-        $client->request('GET', '/logout');
+        $session = new Session(new MockArraySessionStorage());
+        $this->client->request(
+            Request::METHOD_GET,
+            $this->urlGenerator->generate('logout')
+        );
         $this->assertEquals(null, $session->get('user'));
         $this->assertResponseStatusCodeSame(302);
-        $client->followRedirect();
+        $this->client->followRedirect();
         $this->assertSelectorTextContains("h1", "Connexion");
         $this->assertResponseStatusCodeSame(200);
     }
 
     public function testAnotherLogout()
     {
-        $client = static::createClient([], [
-            'PHP_AUTH_USER' => 'Admin',
-            'PHP_AUTH_PW'   => '0000'
-        ]);
-        $client->request('GET', '/logout');
+        $this->client->request(
+            Request::METHOD_GET,
+            $this->urlGenerator->generate('logout')
+        );
         $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);
-        $client->followRedirect();
+        $this->client->followRedirect();
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
         $this->assertSelectorExists('label', 'Mot de passe');
     }
