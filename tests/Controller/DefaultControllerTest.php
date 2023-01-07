@@ -57,6 +57,9 @@ class DefaultControllerTest extends HelperTestCase
 
     }
 
+    /**
+     * @return void
+     */
     public function testPassAccessHomepageByLoginForm(): void
     {
         $this->client->request(
@@ -130,6 +133,9 @@ class DefaultControllerTest extends HelperTestCase
         }
     }
 
+    /**
+     * @return void
+     */
     public function testNotLoggedHomepage(): void
     {
         self::ensureKernelShutdown();
@@ -140,7 +146,10 @@ class DefaultControllerTest extends HelperTestCase
         $this->assertSelectorExists('label', 'Mot de passe');
     }
 
-    public function testAccessWhenUserLoggedIn()
+    /**
+     * @return void
+     */
+    public function testAccessWhenUserLoggedIn(): void
     {
         $this->client->loginUser($this->user, 'secured_area');
         $this->client->request(
