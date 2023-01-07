@@ -15,6 +15,7 @@ class DefaultControllerTest extends HelperTestCase
 {
     private Router|null $urlGenerator;
     private KernelBrowser $client;
+    private User $user;
 
     /**
      * @throws Exception
@@ -22,10 +23,6 @@ class DefaultControllerTest extends HelperTestCase
     public function setUp(): void
     {
         $this->client = static::createClient();
-        $this->fakeUserData = [
-            'username' => 'toto',
-            'password' => '0000'
-        ];
         $this->urlGenerator = $this->client->getContainer()->get('router');
         $userRepo = $this->getEntityManager()->getRepository(User::class);
         $this->user = $userRepo->find(2);
