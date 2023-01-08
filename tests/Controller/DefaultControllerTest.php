@@ -56,9 +56,11 @@ class DefaultControllerTest extends HelperTestCase
 
     /**
      * @return void
+     * @throws Exception
      */
     public function testPassAccessHomepageByLoginForm(): void
     {
+        $this->setUserNullInSession();
         $this->client->request(
             Request::METHOD_GET,
             $this->urlGenerator->generate('homepage')
