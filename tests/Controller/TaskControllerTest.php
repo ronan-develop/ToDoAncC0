@@ -39,8 +39,6 @@ class TaskControllerTest extends HelperTestCase
      */
     public function testUserCannotListTaskWhileIsNotConnected()
     {
-        $urlGenerator = $this->getContainer()->get('router');
-
         $this->setUserNullInSession();
         $this->client->request(Request::METHOD_GET, $this->urlGenerator->generate('task_list'));
         $this->assertEquals(
