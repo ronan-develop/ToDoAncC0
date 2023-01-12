@@ -1,7 +1,3 @@
----
-sidebar_position: 5
----
-
 # Symfony for dummies
 
 Only two important things to know about the Framework:
