@@ -1,41 +1,41 @@
-#tests:
-#  'Less ORM entities should be created':
-#    path:
-#      - '/.*'
-#    methods:
-#      - ANY
-#    command: '.*'
-#    assertions:
-#      - { label: null, expression: 'metrics.entities.created.count <= 50' }
-#    exclude: {  }
-#
-#  'PHP Preloading should be configured':
-#    path:
-#      - '/.*'
-#    methods:
-#      - ANY
-#    command: '.*'
-#    assertions:
-#      - { label: null, expression: 'runtime.configuration.opcache_preload != ""' }
-#    when: 'is_extension_loaded("zend_opcache")'
-#    exclude: { }
-#
-#  '.env configuration should not be parsed in production':
-#    path:
-#      - '/.*'
-#    methods:
-#      - ANY
-#    assertions:
-#      - { label: null, expression: 'metrics.symfony.dotenv.parse.count == 0' }
-#    exclude: { }
-#
-#recommendations:
-#  php.php_preloading:
-#    enabled: false
-#
-#  'list tasks':
-#    path:
-#      - '/tasks'
-#    assertions:
-#      - main.wall_time < 300ms
-#      - main.memory < 2Mb
+tests:
+  'Less ORM entities should be created':
+    path:
+      - '/.*'
+    methods:
+      - ANY
+    command: '.*'
+    assertions:
+      - { label: null, expression: 'metrics.entities.created.count <= 50' }
+    exclude: {  }
+
+  'PHP Preloading should be configured':
+    path:
+      - '/.*'
+    methods:
+      - ANY
+    command: '.*'
+    assertions:
+      - { label: null, expression: 'runtime.configuration.opcache_preload != ""' }
+    when: 'is_extension_loaded("zend_opcache")'
+    exclude: { }
+
+  '.env configuration should not be parsed in production':
+    path:
+      - '/.*'
+    methods:
+      - ANY
+    assertions:
+      - { label: null, expression: 'metrics.symfony.dotenv.parse.count == 0' }
+    exclude: { }
+
+recommendations:
+  php.php_preloading:
+    enabled: false
+
+  'list tasks':
+    path:
+      - '/tasks'
+    assertions:
+      - main.wall_time < 300ms
+      - main.memory < 2Mb
