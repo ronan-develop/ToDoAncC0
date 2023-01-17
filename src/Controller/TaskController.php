@@ -76,7 +76,8 @@ class TaskController extends AbstractController
         return $this->render('task/edit.html.twig', [
             'form' => $form,
             'task' => $task,
-        ]);
+            ]
+        );
     }
 
     #[Route('/tasks/{id}/toggle', name: 'task_toggle')]
