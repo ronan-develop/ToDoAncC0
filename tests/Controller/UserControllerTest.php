@@ -137,7 +137,7 @@ class UserControllerTest extends HelperTestCase
         $this->assertSelectorExists('form[name="user"]');
         $this->assertSelectorExists('input[id="user_username"]');
 
-        $newUser = $this->client->submitForm('Ajouter', [
+        $this->client->submitForm('Ajouter', [
             "user[username]" => "test",
             "user[password][first]" => "0000",
             "user[password][second]" => "0000",

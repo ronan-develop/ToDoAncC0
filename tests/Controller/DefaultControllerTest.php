@@ -40,7 +40,7 @@ class DefaultControllerTest extends HelperTestCase
             $this->urlGenerator->generate('homepage')
         );
         $this->assertResponseStatusCodeSame(Response::HTTP_FOUND);
-        $crawler = $this->client->followRedirect();
+        $this->client->followRedirect();
         $this->assertResponseStatusCodeSame(Response::HTTP_OK);
         $this->assertSelectorExists("h1", "Se connecter");
 
