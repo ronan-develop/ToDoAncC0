@@ -64,4 +64,14 @@ You can write assertions if you have a premium account, put in `.blackfire.yaml`
       - main.memory < 2Mb
 ```
 
-In dashboard, select a report, click on `Callgraph` column, and find your functions to optimize them
+In dashboard, select a report, click on `Callgraph` column, and find your functions
+to optimize them.
+
+|   Routes    |  Time  | Before |
+|:-----------:|:------:|:------:|
+|  Homepage   | 81.6ms | 154ms  |
+|  user_list  |  60ms  | 71.4ms |
+| user_create | 79.5ms | 1.04s  |
+|  user_edit  | 15.8ms | 131ms  |
+|    tasks    | 79.3ms | 99.6ms |
+| tasks_edit  | 123ms  | 51.8ms |
