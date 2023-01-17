@@ -270,7 +270,7 @@ class TaskControllerTest extends HelperTestCase
             ->setMaxResults(1)
             // construit la requête
             ->getQuery()
-            // hydrate l'objet
+            // Hydrate l'objet
             ->getResult();
 
         // the other user

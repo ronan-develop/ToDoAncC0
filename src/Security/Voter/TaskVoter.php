@@ -34,11 +34,6 @@ class TaskVoter extends Voter
         if (!$user instanceof UserInterface) {
             return false;
         }
-
-        // ... (check conditions and return true to grant permission) ...
-//        return match ($attribute) {
-//            self::DELETE => $this->deleteTask($user, $subject)
-//        };
         if($attribute == self::DELETE){
             return $this->deleteTask($user, $subject);
         }

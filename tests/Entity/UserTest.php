@@ -13,19 +13,19 @@ use PHPUnit\Framework\TestCase;
  */
 class UserTest extends TestCase
 {
-    public function testGetId()
+    public function testGetId(): void
     {
         $user = new User();
         $this->assertNull($user->getId());
     }
 
-    public function testGetUsername()
+    public function testGetUsername(): void
     {
         $user = new User();
         $this->assertNull($user->getUsername());
     }
 
-    public function testSetUsername()
+    public function testSetUsername(): void
     {
         $user = new User();
         $username = 'test_username';
@@ -33,7 +33,7 @@ class UserTest extends TestCase
         $this->assertSame($username, $user->getUsername());
     }
 
-    public function testGetUserIdentifier()
+    public function testGetUserIdentifier(): void
     {
         $user = new User();
         $username = 'test_username';
@@ -41,13 +41,13 @@ class UserTest extends TestCase
         $this->assertSame($username, $user->getUserIdentifier());
     }
 
-    public function testGetRoles()
+    public function testGetRoles(): void
     {
         $user = new User();
         $this->assertContains('ROLE_USER', $user->getRoles());
     }
 
-    public function testSetRoles()
+    public function testSetRoles(): void
     {
         $user = new User();
         $roles = ['ROLE_ADMIN', 'ROLE_USER'];
@@ -55,13 +55,13 @@ class UserTest extends TestCase
         $this->assertSame($roles, $user->getRoles());
     }
 
-    public function testGetPassword()
+    public function testGetPassword(): void
     {
         $user = new User();
         $this->assertNull($user->getPassword());
     }
 
-    public function testSetPassword()
+    public function testSetPassword(): void
     {
         $user = new User();
         $password = 'test_password';
@@ -69,7 +69,7 @@ class UserTest extends TestCase
         $this->assertSame($password, $user->getPassword());
     }
 
-    public function testEraseCredentials()
+    public function testEraseCredentials(): void
     {
         $user = new User();
         $user->eraseCredentials();
@@ -78,13 +78,13 @@ class UserTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function testGetEmail()
+    public function testGetEmail(): void
     {
         $user = new User();
         $this->assertNull($user->getEmail());
     }
 
-    public function testSetEmail()
+    public function testSetEmail(): void
     {
         $user = new User();
         $email = 'test@example.com';
@@ -92,13 +92,13 @@ class UserTest extends TestCase
         $this->assertSame($email, $user->getEmail());
     }
 
-    public function testGetTasks()
+    public function testGetTasks(): void
     {
         $user = new User();
         $this->assertInstanceOf(Collection::class, $user->getTasks());
     }
 
-    public function testAddTask()
+    public function testAddTask(): void
     {
         $user = new User();
         $task = new Task();
@@ -106,7 +106,7 @@ class UserTest extends TestCase
         $this->assertContains($task, $user->getTasks());
     }
 
-    public function testRemoveTask()
+    public function testRemoveTask(): void
     {
         $user = new User();
         $task = new Task();
@@ -115,13 +115,7 @@ class UserTest extends TestCase
         $this->assertNotContains($task, $user->getTasks());
     }
 
-//    public function testGetSalt()
-//    {
-//        $user = new User();
-//        $this->assertNull($user->getSalt());
-//    }
-
-    public function testToString()
+    public function testToString(): void
     {
         $user = new User();
         $user->setUsername('test_username');

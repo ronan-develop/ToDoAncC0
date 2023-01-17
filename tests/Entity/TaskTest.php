@@ -12,13 +12,13 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  */
 class TaskTest extends KernelTestCase
 {
-    public function testGetCreatedAt()
+    public function testGetCreatedAt(): void
     {
         $task = new Task();
         $this->assertInstanceOf(\DateTimeImmutable::class, $task->getCreatedAt());
     }
 
-    public function testSetCreatedAt()
+    public function testSetCreatedAt(): void
     {
         $task = new Task();
         $createdAt = new \DateTimeImmutable();
@@ -26,13 +26,13 @@ class TaskTest extends KernelTestCase
         $this->assertSame($createdAt, $task->getCreatedAt());
     }
 
-    public function testGetTitle()
+    public function testGetTitle(): void
     {
         $task = new Task();
         $this->assertNull($task->getTitle());
     }
 
-    public function testSetTitle()
+    public function testSetTitle(): void
     {
         $task = new Task();
         $title = 'Test task';
@@ -40,13 +40,13 @@ class TaskTest extends KernelTestCase
         $this->assertSame($title, $task->getTitle());
     }
 
-    public function testGetContent()
+    public function testGetContent(): void
     {
         $task = new Task();
         $this->assertNull($task->getContent());
     }
 
-    public function testSetContent()
+    public function testSetContent(): void
     {
         $task = new Task();
         $content = 'Test content';
@@ -54,13 +54,13 @@ class TaskTest extends KernelTestCase
         $this->assertSame($content, $task->getContent());
     }
 
-    public function testIsDone()
+    public function testIsDone(): void
     {
         $task = new Task();
         $this->assertFalse($task->isDone());
     }
 
-    public function testToggle()
+    public function testToggle(): void
     {
         $task = new Task();
         $task->toggle(true);
@@ -69,13 +69,13 @@ class TaskTest extends KernelTestCase
         $this->assertFalse($task->isDone());
     }
 
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $task = new Task();
         $this->assertNull($task->getUser());
     }
 
-    public function testSetUser()
+    public function testSetUser(): void
     {
         $task = new Task();
         $user = new User();
