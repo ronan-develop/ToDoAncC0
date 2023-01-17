@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultControllerTest extends HelperTestCase
 {
+
     private Router|null $urlGenerator;
     private KernelBrowser $client;
     private User $user;
@@ -91,7 +92,7 @@ class DefaultControllerTest extends HelperTestCase
     {
         $this->client->request(
             Request::METHOD_GET,
-            $this->urlGenerator->generate('homepage')
+            uri: $this->urlGenerator->generate(name: 'homepage')
         );
         $this->assertResponseRedirects('http://localhost/login');
         $this->assertEquals(
