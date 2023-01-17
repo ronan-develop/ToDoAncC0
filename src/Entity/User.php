@@ -28,11 +28,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column(type: 'json')]
     private array $roles = [];
+
     /**
      * @var string The hashed password
      */
     #[ORM\Column(type: "string", length: 60, nullable: false)]
     private ?string $password = null;
+
+    /**
+     * @var string|null
+     */
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
@@ -132,11 +137,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
+    /**
+     * @return string|null
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
+    /**
+     * @param string $email
+     * @return $this
+     */
     public function setEmail(string $email): self
     {
         $this->email = $email;
