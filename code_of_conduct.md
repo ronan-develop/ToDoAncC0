@@ -26,21 +26,21 @@ As such, this document outlines both expected behavior and behavior that will no
 
 We expect our members, contributors, and leaders to:
 
-- Participate in the community actively and authentically. Your meaningful contributions add to the health and longevity
+-  Participate in the community actively and authentically. Your meaningful contributions add to the health and longevity
   of this community.
-- Attempt collaboration before conflict. Seek out and be respectful of differing opinions, styles, viewpoints, and
+-  Attempt collaboration before conflict. Seek out and be respectful of differing opinions, styles, viewpoints, and
   experiences.
-- Give and accept constructive feedback, gracefully. When expressing disagreement, be professional and respectful. Be
+-  Give and accept constructive feedback, gracefully. When expressing disagreement, be professional and respectful. Be
   open to learning from and educating others where needed.
-- Demonstrate empathy and kindness toward other people. Be considerate and respectful in your word choice, speech, and
+-  Demonstrate empathy and kindness toward other people. Be considerate and respectful in your word choice, speech, and
   actions. Show respect with the terms you use to address others.
-- Look out for those around you in the community, especially if you are in a position of influence.
+-  Look out for those around you in the community, especially if you are in a position of influence.
   Alert [community moderators](./community_moderators.md) if you notice a dangerous situation, someone in distress, or
   violations of this code of conduct, even if they seem inconsequential.
-- Gracefully accept responsibility and apologize to those affected by any mistakes, whether made intentionally or
+-  Gracefully accept responsibility and apologize to those affected by any mistakes, whether made intentionally or
   unintentionally. If someone says they have been harmed through your words or actions, listen carefully, make amends,
   learn from the experience, and correct the behavior going forward.
-- Focus on what is best for the overall community, not just for us as individuals. Ensure that leadership roles and
+-  Focus on what is best for the overall community, not just for us as individuals. Ensure that leadership roles and
   opportunities are well-distributed across the community membership and not just centered in one person or the same few
   people. To help our community develop and build up leaders at every level of the Good Docs Project, ensure that you
   share knowledge with others as much as possible and be mindful of fostering healthy dialogue where no one voice
