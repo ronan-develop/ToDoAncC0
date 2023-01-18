@@ -1,0 +1,37 @@
+@startuml
+!theme vibrant
+scale 650 width
+
+skinparam class {
+    ArrowColor #631FF2
+    BorderColor #DB2790
+}
+
+header ""
+
+TITLE "Authentication"
+actor Client as c
+participant ToDoAndCo as a #gray
+database Database as d #salmon
+
+note right of c: ["POST"] method
+c -> a: Request login_check
+activate a #turquoise
+alt wrong format
+a --[#red]> c:Response \ redirect to login page (500)
+end
+a --> a: Check Request data
+a --> d: check User
+alt wrong credentials
+a --[#red]> d: Check User
+d --[#red]> a
+a -[#red]-> c: Response\nInvalid credentials
+end
+activate d #salmon
+d --> a: user ok
+
+deactivate d
+a --> a: login_check
+a -[#green]> c: Response\n(200)\ndisplay homepage
+deactivate a
+@enduml

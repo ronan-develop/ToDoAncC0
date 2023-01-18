@@ -1,0 +1,31 @@
+@startuml
+!theme vibrant
+scale 650 width
+TITLE "Toggle task"
+skinparam class {
+    ArrowColor #631FF2
+    BorderColor #DB2790
+}
+
+actor authenticatedUser as u
+participant  application as a
+database database as d
+
+note right of u: ["POST"] method
+u -> a: toggle one task
+activate a #turquoise
+a -> d: request: persist
+d -[#green]>o a: <font color=green>persistance ok
+a -[#green]> u: <font color=green>response: 200
+alt some error
+
+note right of u: Error system
+a -[#red]>x a: <font color=red>system error
+a x-[#red]> u: <font color=red>Http code
+
+note right of a: Database error
+d x-[#red]> a: <font color=red>database error
+a x-[#red]> u: <font color=red>Http code
+end
+deactivate a
+@enduml

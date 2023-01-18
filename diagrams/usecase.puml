@@ -1,0 +1,40 @@
+@startuml
+left to right direction
+
+package Users {
+    actor Admin as A
+    actor User as u
+}
+
+
+package ToDoAndCo {
+    (list all tasks)
+    (list one task)
+    (edit one task)
+    (list all users)
+    (list one user)
+    (edit one user)
+}
+
+package Voters {
+    (Autorisation)
+}
+
+    A --> u
+    u --> (list all tasks)
+    u --> (list one task)
+    u --> (edit one task)
+
+    u --> (list all users)
+    u --> (list one user)
+    u --> (edit one user)
+
+    (list all tasks) --> (Autorisation): <<include>>
+    (list one task) --> (Autorisation): <<include>>
+    (edit one task) --> (Autorisation): <<include>>
+
+    (list all users) --> (Autorisation): <<include>>
+    (list one user) --> (Autorisation): <<include>>
+    (edit one user) --> (Autorisation): <<include>>
+
+@enduml
