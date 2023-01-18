@@ -20,7 +20,7 @@ package Voters {
     (Autorisation)
 }
 
-    A --> u
+    A --|> u
     u --> (list all tasks)
     u --> (list one task)
     u --> (edit one task)
