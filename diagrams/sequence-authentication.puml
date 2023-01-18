@@ -11,7 +11,7 @@ header ""
 
 TITLE "Authentication"
 actor Client as c
-participant ToDoAndCo as a #gray
+participant  application as a
 database Database as d #salmon
 
 note right of c: ["POST"] method
